@@ -1,10 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
 import Badge from "../components/Badge.astro";
 import LinkedIn from "../icons/LinkedIn.astro";
 import GitHub from "../icons/GitHub.astro";
 import SocialMediaIcons from "../components/SocialMediaIcons.astro";
+import Image from "astro/components/Image.astro";
+import Experience from "../components/Experience.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import SuitcaseIcon from "../icons/SuitcaseIcon.astro";
 ---
 
 <Layout
@@ -12,15 +15,18 @@ import SocialMediaIcons from "../components/SocialMediaIcons.astro";
     description="With a passion for turning innovative ideas into digital realities, I specialize in creating elegant, user-friendly web solutions that drive results. Let's collaborate and bring your digital vision to life."
 >
     <main>
-        <section class="w-full mx-auto lg:w-[740px] py-44">
+        <SectionContainer id="" class="py-44 pb-24">
             <h1
                 class="text-white text-5xl font-bold flex flex-row items-center gap-x-4 pb-10"
             >
                 <span>
-                    <img
-                        class="size-20"
+                    <Image
+                        class="size-20 drop-shadow-[5px_5px_5px_rgba(255,255,255,0.1)]"
                         src="/src/images/hi.webp"
-                        alt="Portfolio photo"
+                        alt="greetin"
+                        loading={"eager"}
+                        width={80}
+                        height={80}
                     />
                 </span>
                 I'm Deyler.A.F
@@ -56,6 +62,13 @@ import SocialMediaIcons from "../components/SocialMediaIcons.astro";
                     GitHub
                 </SocialMediaIcons>
             </nav>
-        </section>
+        </SectionContainer>
+        <SectionContainer>
+            <h2 class="text-2xl font-semibold mb-6 flex gap-x-3 items-center">
+                <SuitcaseIcon class="size-7" />
+                Work experience
+            </h2>
+            <Experience />
+        </SectionContainer>
     </main>
 </Layout>
