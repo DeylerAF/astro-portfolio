@@ -1,0 +1,60 @@
+---
+const personalImageAlt = "Hi";
+import Badge from "@/components/Badge.astro";
+import LinkedInIcon from "@/components/icons/LinkedIn.astro";
+import GitHub from "@/components/icons/GitHub.astro";
+import SocialPill from "@/components/SocialPill.astro";
+import Image from "astro/components/Image.astro";
+---
+
+<div class="max-w-xl">
+    <div class="flex items-end gap-4 mb-4">
+        <Image
+            class="size-20 drop-shadow-[5px_5px_5px_rgba(255,255,255,0.1)]"
+            src="/src/images/hi.webp"
+            alt={personalImageAlt}
+            loading={"eager"}
+            width={80}
+            height={80}
+        />
+        <a
+            href="https://linkedin.com/in/midudev"
+            target="_blank"
+            rel="noopener"
+            class="flex items-center transition md:justify-center md:hover:scale-105"
+        >
+            <Badge>Open to work</Badge>
+        </a>
+    </div>
+    <h1
+        class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
+    >
+        Hi, I'm Deyler.A.F
+    </h1>
+    <p
+        class="flex flex-col gap-4 mt-6 text-xl text-gray-800 dark:text-gray-300"
+    >
+        <span
+            class="dark:[&>strong]:text-lime-200 [&>strong]:text-lime-500 [&>strong]:font-semibold"
+            >+4 years of experience as <strong>Full-Stack Developer.</strong
+            ></span
+        >
+        <span>From La Furtuana de San Carlos, Costa Rica 🇨🇷.</span>
+        <span class="opacity-85">
+            With a passion for turning innovative ideas into digital realities,
+            I specialize in creating elegant, user-friendly web solutions that
+            drive results. Let's collaborate and bring your digital vision to
+            life.
+        </span>
+    </p>
+    <nav class="flex flex-wrap gap-4 mt-8">
+        <SocialPill href="mailto:miduga@gmail.com">
+            <GitHub class="size-4" />
+            GitHub
+        </SocialPill>
+        <SocialPill href="https://linkedin.com/in/midudev">
+            <LinkedInIcon class="size-4" />
+            LinkedIn
+        </SocialPill>
+    </nav>
+</div>

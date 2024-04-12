@@ -1,9 +1,10 @@
 ---
-import NextJS from "../icons/NextJS.astro";
-import Tailwind from "../icons/Tailwind.astro";
-import Link from "../icons/Link.astro";
-import GitHub from "../icons/GitHub.astro";
-import LinkButton from "../icons/LinkButton.astro";
+import GitHub from "./icons/GitHub.astro";
+import NextJS from "./icons/NextJS.astro";
+import Tailwind from "./icons/Tailwind.astro";
+import Link from "./icons/Link.astro";
+import LinkButton from "./LinkButton.astro";
+import Image from "astro/components/Image.astro";
 
 const TAGS = {
     NEXT: {
@@ -42,13 +43,16 @@ const PROJECTS = [
     {
         PROJECTS.map(({ image, title, description, tags, link, github }) => (
             <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
-                <div class="w-full md:w-1/2">
+                <div class="w-28 md:w-28">
                     <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-                        <img
-                            alt="Recién llegado vs 5 años en Nueva Zelanda"
+                        <Image
+                            width={300}
+                            height={300}
+                            src="/src/images/me.webp"
+                            alt="hola"
                             class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
-                            loading="lazy"
-                            src={image}
+                            style="object-position: 50% 50%"
+                            loading={"eager"}
                         />
                     </div>
                 </div>
