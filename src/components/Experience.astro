@@ -1,38 +1,38 @@
 ---
-import ExperienceItem from "./ExperienceItem.astro"
+import ExperienceItem from "./ExperienceItem.astro";
 const EXPERIENCE = [
-  {
-    date: "Present...",
-    title: "Full-Stack Developer",
-    company: "Freelance",
-    description:
-      "My role as a Freelance Full Stack Web Developer involves translating complex ideas into seamless web applications with an emphasis on performance and elegance.",
-    link: "https://www.linkedin.com/in/deyleraf/",
-  },
-  {
-    date: "2020 - 2024",
-    title: "Frontend Developer",
-    company: "Pentaseis",
-    description:
-      "My role in the company is to assist the Senior Developer with designing, deploying, coding, maintaining, and fixing bugs in the existing projects.",
-    link: "https://pentaseis.com/"
-  },
-  {
-    date: "2010-2020",
-    title: "Customer Service Staff",
-    company: "Hotel Companies",
-    description:
-      "While I was studying to get an opportunity in the world of web development, I was working in different hotel companies. My role was a Customer Service Staff. In that role, I cultivated robust interpersonal skills and a steadfast commitment to guest satisfaction, which I demonstrated consistently across a variety of hotel companies. My proactive approach and ability to anticipate guest needs resulted in personalized service experiences and contributed to a positive, welcoming atmosphere.",
-  },
-]
+    {
+        date: "Present...",
+        title: "Full-Stack Developer",
+        company: "Freelance",
+        description:
+            "My role as a Freelance Full Stack Web Developer involves translating complex ideas into seamless web applications with an emphasis on performance and elegance.",
+        link: "https://www.linkedin.com/in/deyleraf/",
+    },
+    {
+        date: "2020 - 2024",
+        title: "Frontend Developer",
+        company: "Pentaseis",
+        description:
+            "My role in the company is to assist the Senior Developer with designing, deploying, coding, maintaining, and fixing bugs in the existing projects.",
+        link: "https://pentaseis.com/",
+    },
+    {
+        date: "2010-2020",
+        title: "Customer Service Staff",
+        company: "Hotel Companies",
+        description:
+            "While I was studying to get an opportunity in the world of web development, I was working in different hotel companies. My role was a Customer Service Staff. In that role, I cultivated robust interpersonal skills and a steadfast commitment to guest satisfaction, which I demonstrated consistently across a variety of hotel companies. My proactive approach and ability to anticipate guest needs resulted in personalized service experiences and contributed to a positive, welcoming atmosphere.",
+    },
+];
 ---
 
 <ol class="relative mt-16">
-  {
-    EXPERIENCE.map((experience) => (
-      <li class="">
-        <ExperienceItem {...experience} />
-      </li>
-    ))
-  }
+    {
+        EXPERIENCE.map((experience, index) => (
+        <li>
+            <ExperienceItem {...experience} last={index === EXPERIENCE.length - 1} />
+        </li>
+        ))
+    }
 </ol>

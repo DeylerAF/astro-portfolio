@@ -21,17 +21,19 @@ const personalImageAlt = "Deyler Alvarez Fernández";
             Looking towards the future, I aspire to launch a YouTube channel dedicated to web development. <strong>My vision is to create content that not only educates but also inspires and empowers aspiring developers around the world.</strong> I want to build a community where we can exchange ideas, solve problems together, and contribute to the advancement of the web development industry.
         </p>
     </div>
-    <div
-        class="relative order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-full aspect-square rounded-2xl bg-black/20 dark:bg-lime-500/5 ring-1 ring-black/70 dark:ring-white/20"
-    >
-        <Image
-            width="200"
-            height="200"
-            src="/images/me.webp"
-            alt={personalImageAlt}
-            class="absolute bottom-0"
-            style="object-position: 50% 50%"
-            loading={"eager"}
-        />
+    <div class="relative order-1 md:order-2">
+        <div
+            class="object-cover w-40 h-auto p-1 lg:p-2 mt-32 lg:mt-0 rotate-3 aspect-square rounded-2xl bg-black/20 dark:bg-lime-500/10 ring-1 ring-black/70 dark:ring-lime-500/50"
+        >
+            <Image
+                width="200"
+                height="200"
+                src="/images/me.webp"
+                alt={personalImageAlt}
+                class="absolute bottom-0"
+                style="object-position: 50% 50%"
+                loading={"eager"}
+            />
+        </div>
     </div>
 </article>
