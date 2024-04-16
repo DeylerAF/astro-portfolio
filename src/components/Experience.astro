@@ -5,24 +5,29 @@ const EXPERIENCE = [
         date: "Present...",
         title: "Full-Stack Developer",
         company: "Freelance",
-        description:
-            "My role as a Freelance Full Stack Web Developer involves translating complex ideas into seamless web applications with an emphasis on performance and elegance.",
+        /* description:
+            "My role as a Freelance Full Stack Web Developer involves translating complex ideas into seamless web applications with an emphasis on performance and elegance.", */
+        des1: "Currently, I work as a freelancer, dedicating myself to managing personal projects while looking for a stable job opportunity that offers an enriching work environment and the flexibility to work remotely.",
+        des2: "My experience has been enriched by learning to create APIs on the backend, which complements my previous experience as a front-end developer, allowing me to develop full-stack web applications. Additionally, I have acquired skills in using the free services of Azure, AWS, and Cloudflare to host my projects efficiently and at a low or zero cost, adjusting to the specific needs of each project.",
+        des3: "Throughout my career as a developer, I have gained knowledge in various technologies. However, my preferred technology stack includes using Django for creating APIs and React on the client side for user interface development. For databases, I prefer to use PostgreSQL, and I use Docker to ensure compatibility and avoid version issues when deploying my projects in different environments.",
         link: "https://www.linkedin.com/in/deyleraf/",
     },
     {
         date: "2020 - 2024",
         title: "Frontend Developer",
         company: "Pentaseis",
-        description:
-            "My role in the company is to assist the Senior Developer with designing, deploying, coding, maintaining, and fixing bugs in the existing projects.",
         link: "https://pentaseis.com/",
+        des1: "As a Frontend Developer at Pentaseis, my primary responsibility was to support the Senior Developer in various aspects of project development. This included designing, deploying, coding, maintaining, and troubleshooting existing projects.",
+        des2: "I specialized in creating custom WordPress themes utilizing Advanced Custom Fields, HTML/CSS, JavaScript, PHP, and MySQL for database management. Our team leveraged cPanel on SiteGround for efficient and seamless deployments.",
+        des3: "This role allowed me to contribute significantly to the team while also enhancing my technical skills and understanding of front-end development.",
     },
     {
         date: "2010-2020",
         title: "Customer Service Staff",
         company: "Hotel Companies",
-        description:
-            "While I was studying to get an opportunity in the world of web development, I was working in different hotel companies. My role was a Customer Service Staff. In that role, I cultivated robust interpersonal skills and a steadfast commitment to guest satisfaction, which I demonstrated consistently across a variety of hotel companies. My proactive approach and ability to anticipate guest needs resulted in personalized service experiences and contributed to a positive, welcoming atmosphere.",
+        des1: "While I was studying to get an opportunity in the world of web development, I worked in various hotel companies.",
+        des2: "In this role, I cultivated robust interpersonal skills and a steadfast commitment to guest satisfaction, which I demonstrated consistently across a variety of hotel companies.",
+        des3: "My proactive approach and ability to anticipate guest needs resulted in personalized service experiences and contributed to a positive, welcoming atmosphere.",
     },
 ];
 ---
@@ -30,9 +35,12 @@ const EXPERIENCE = [
 <ol class="relative mt-16">
     {
         EXPERIENCE.map((experience, index) => (
-        <li>
-            <ExperienceItem {...experience} last={index === EXPERIENCE.length - 1} />
-        </li>
+            <li>
+                <ExperienceItem
+                    {...experience}
+                    last={index === EXPERIENCE.length - 1}
+                />
+            </li>
         ))
     }
 </ol>
