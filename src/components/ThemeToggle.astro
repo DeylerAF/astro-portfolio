@@ -3,7 +3,7 @@ import SunIcon from "./icons/Sun.astro";
 import MoonIcon from "./icons/Moon.astro";
 import SystemIcon from "./icons/System.astro";
 
-const THEMES = ["Light", "Dark", "System"];
+const THEMES = ["Light", "Dark", "Auto"];
 ---
 
 <div class="relative ml-1 mr-1">
@@ -11,20 +11,20 @@ const THEMES = ["Light", "Dark", "System"];
         id="theme-toggle-btn"
         class="appearance-none border-none flex hover:scale-125 transition"
     >
-        <span class="sr-only">Elige el tema</span>
+        <span class="sr-only">Choose your theme</span>
         <SunIcon id="light" class="theme-toggle-icon size-5 transition-all" />
         <MoonIcon
             id="dark"
             class="theme-toggle-icon absolute size-5 transition-all"
         />
         <SystemIcon
-            id="system"
+            id="auto"
             class="theme-toggle-icon absolute size-5 transition-all"
         />
     </button>
     <div
         id="themes-menu"
-        class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md backdrop-blur-3xl bg-lime-500/90 border border-lime-600 dark:border-lime-400/20 shadow-[0_3px_10px_rgb(0,0,0,0.3)] dark:shadow-[0_3px_10px_rgb(255,255,255,0.3)]"
+        class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md backdrop-blur-3xl bg-lime-400/90 dark:bg-lime-600/90 border border-lime-600 dark:border-lime-400 shadow-[0_3px_10px_rgb(0,0,0,0.3)] dark:shadow-[0_3px_10px_rgb(255,255,255,0.3)]"
     >
         <ul>
             {
@@ -65,7 +65,7 @@ const THEMES = ["Light", "Dark", "System"];
 
     const getThemePreference = () => {
         if (typeof localStorage !== "undefined") {
-            return localStorage.getItem("theme") ?? "system";
+            return localStorage.getItem("theme") ?? "auto";
         }
 
         return window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -91,7 +91,7 @@ const THEMES = ["Light", "Dark", "System"];
         const themePreference = getThemePreference();
         const isDark =
             themePreference === "dark" ||
-            (themePreference === "system" && matchMedia.matches);
+            (themePreference === "auto" && matchMedia.matches);
 
         updateIcon(themePreference);
         document.documentElement.classList[isDark ? "add" : "remove"]("dark");

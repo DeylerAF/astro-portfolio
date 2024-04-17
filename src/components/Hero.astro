@@ -10,7 +10,7 @@ import Image from "astro/components/Image.astro";
 <div class="max-w-xl">
     <div class="flex items-end gap-4 mb-4">
         <Image
-            class="size-20 drop-shadow-[5px_5px_5px_rgba(0,0,0,0.5)] dark:drop-shadow-[5px_5px_5px_rgba(255,255,255,0.1)]"
+            class="size-20 drop-shadow-[0px_0px_5px_rgba(0,0,0,0.5)] dark:drop-shadow-[0px_0px_5px_rgba(255,255,255,0.2)]"
             src="/images/hi.webp"
             alt={personalImageAlt}
             loading={"eager"}
@@ -27,7 +27,7 @@ import Image from "astro/components/Image.astro";
         </a>
     </div>
     <h1
-        class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white [&>strong]:text-lime-500"
+        class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white [&>strong]:text-lime-600 dark:[&>strong]:text-lime-400"
     >
         Hi, I'm <strong>Deyler Alvarez Fernández</strong>
     </h1>
@@ -35,7 +35,7 @@ import Image from "astro/components/Image.astro";
         class="flex flex-col gap-4 mt-6 text-xl text-gray-800 dark:text-gray-300"
     >
         <span
-            class="[&>strong]:text-lime-500 [&>strong]:font-semibold"
+            class="[&>strong]:text-lime-600 dark:[&>strong]:text-lime-400 [&>strong]:font-semibold"
             >+4 years of experience as <strong>Full-Stack Developer.</strong
             ></span
         >
