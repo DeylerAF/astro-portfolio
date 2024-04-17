@@ -48,12 +48,12 @@ const navItems = [
     </nav>
 </header>
 
-<script>
+<script is:inline>
     document.addEventListener("astro:page-load", () => {
         const sections = document.querySelectorAll("section");
         const navItems = document.querySelectorAll("header nav a");
 
-        const callback = (entries: any[]) => {
+        const callback = (entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     navItems.forEach((item) => {
