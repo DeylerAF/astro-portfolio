@@ -34,7 +34,7 @@ const navItems = [
         {
             navItems.map((link) => (
                 <a
-                    class="relative block px-2 py-2 transition hover:text-lime-600 dark:hover:text-lime-400"
+                    class="relative block px-2 py-2 transition hover:text-lime-500 font-medium"
                     aria-label={link.label}
                     href={link.url}
                 >
@@ -58,9 +58,22 @@ const navItems = [
                         if (
                             item.getAttribute("aria-label") == entry.target.id
                         ) {
-                            item.classList.add("text-lime-500");
+                            if (
+                                document.documentElement.classList.contains(
+                                    "dark",
+                                )
+                            ) {
+                                item.classList.add("text-lime-400");
+                                item.classList.remove("text-lime-600");
+                            } else {
+                                item.classList.add("text-lime-600");
+                                item.classList.remove("text-lime-400");
+                            }
                         } else {
-                            item.classList.remove("text-lime-500");
+                            item.classList.remove(
+                                "text-lime-600",
+                                "text-lime-400",
+                            );
                         }
                     });
                 }
@@ -99,7 +112,7 @@ const navItems = [
 
     @keyframes nav-shadown {
         to {
-            @apply shadow-lg bg-lime-500/20 ring-1 ring-lime-500 backdrop-blur;
+            @apply shadow-lg bg-lime-500/10 ring-2 ring-lime-500 dark:ring-lime-500 backdrop-blur;
         }
     }
 </style>
