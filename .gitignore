@@ -11,9 +11,6 @@ dist/
 # jetbrains setting folder
 .idea/
 
-#bun
-bun.lockb
-
 #vscode
 .vscode/*
 *.code-workspace
