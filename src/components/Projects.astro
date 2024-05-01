@@ -1,16 +1,16 @@
 ---
 import GitHub from "./icons/GitHub.astro";
-import NextJS from "./icons/NextJS.astro";
+import Django from "./icons/Django.astro";
 import Tailwind from "./icons/Tailwind.astro";
 import Link from "./icons/Link.astro";
 import LinkButton from "./LinkButton.astro";
 import Image from "astro/components/Image.astro";
 
 const TAGS = {
-    NEXT: {
-        name: "Next.js",
+    DJANGO: {
+        name: "Django",
         class: "bg-black text-white",
-        icon: NextJS,
+        icon: Django,
     },
     TAILWIND: {
         name: "Tailwind CSS",
@@ -20,89 +20,112 @@ const TAGS = {
 };
 const PROJECTS = [
     {
-        title: "SVGL - A beautiful library with SVG logos",
-        description:
-            "Biblioteca de logos SVG de las marcas más populares. +10k visitas al mes. +2K svgs descargados. Creado desde cero con Next.js, React y Tailwind CSS.",
-        link: "https://svgl.vercel.app/",
-        github: "https://github.com/pheralb/svgl",
-        image: "/projects/svgl.webp",
-        tags: [TAGS.NEXT, TAGS.TAILWIND],
-    },
-    {
-        title: "AdventJS - Retos de programación con JavaScript y TypeScript",
-        description:
-            "Plataforma gratuita con retos de programación. Más de 1 millón de visitas en un mes. +50K retos completados. Creada desde cero con Next.js, React y Tailwind CSS.",
-        link: "https://adventjs.dev",
-        image: "/projects/adventjs.webp",
-        tags: [TAGS.NEXT, TAGS.TAILWIND],
-    },
-    {
-        title: "AdventJS - Retos de programación con JavaScript y TypeScript",
-        description:
-            "Plataforma gratuita con retos de programación. Más de 1 millón de visitas en un mes. +50K retos completados. Creada desde cero con Next.js, React y Tailwind CSS.",
-        link: "https://adventjs.dev",
-        image: "/projects/adventjs.webp",
-        tags: [TAGS.NEXT, TAGS.TAILWIND],
+        title: "PandaShop",
+        desc1: "This is a functional example of the personal project I am working on. I designed and implemented an eCommerce website using Django REST framework for the backend and React for the frontend.",
+        desc2: "The project includes features such as product listings, user authentication, and shopping cart functionality. To ensure scalability and performance, I deployed the application on an AWS EC2 instance and leveraged Cloudflare for secure and efficient content delivery.",
+        desc3: "I continue working on the project to implement more functionalities to make it more attractive and be able to offer it to businesses near the area where I live that only have a physical store and are looking for ways to take their business online.",
+        link: "https://pandashop.deyleraf.dev/",
+        github: "https://github.com/DeylerAF/ecommerce-django-react-example",
+        image: "/images/projects/PandaShop.webp",
+        tags: [TAGS.DJANGO, TAGS.TAILWIND],
     },
 ];
 ---
 
 <div class="flex flex-col gap-y-16">
     {
-        PROJECTS.map(({ title, description, tags, link, github }) => (
-            <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
-                <div class="w-28 md:w-28">
-                    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-                        <Image
-                            width={300}
-                            height={300}
-                            src="/images/me.webp"
-                            alt="hola"
-                            class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
-                            style="object-position: 50% 50%"
-                            loading={"eager"}
-                        />
-                    </div>
-                </div>
-
-                <div class="w-full md:w-1/2 md:max-w-lg">
-                    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
-                        {title}
-                    </h3>
-                    <div class="flex flex-wrap mt-2">
-                        <ul class="flex flex-row mb-2 gap-x-2">
-                            {tags.map((tag) => (
-                                <li>
-                                    <span
-                                        class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
-                                    >
-                                        <tag.icon class="size-4" />
-                                        {tag.name}
-                                    </span>
-                                </li>
-                            ))}
-                        </ul>
-
-                        <div class="mt-2 text-gray-700 dark:text-gray-400">
-                            {description}
+        PROJECTS.map(
+            ({ image, title, desc1, desc2, desc3, tags, link, github }) => (
+                <article class="flex flex-col space-x-0 space-y-8 md:flex-row md:space-x-8 md:space-y-0">
+                    <div class="w-full md:w-1/2">
+                        <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:hover:-translate-y-1 md:hover:shadow-2xl lg:border lg:border-lime-600/50 lg:hover:border-lime-500/75 lg:hover:bg-lime-600/10">
+                            <Image
+                                width={300}
+                                height={300}
+                                src={image}
+                                alt="PandaShop"
+                                class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:hover:scale-105"
+                                style="object-position: 50% 50%"
+                                loading={"eager"}
+                            />
                         </div>
-                        <footer class="flex items-end justify-start mt-4 gap-x-4">
-                            {github && (
-                                <LinkButton href={github}>
-                                    <GitHub class="size-6" />
-                                    Code
-                                </LinkButton>
-                            )}
-                            {link && (
-                                <LinkButton href={link}>
-                                    <Link class="size-4" />
-                                    Preview
-                                </LinkButton>
-                            )}
-                        </footer>
                     </div>
-                </div>
-            </article>
-        ))
+
+                    <div class="w-full md:w-1/2 md:max-w-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+                            {title}
+                        </h3>
+                        <div class="flex flex-wrap mt-2">
+                            <ul class="flex flex-row mb-2 gap-x-2">
+                                {tags.map((tag) => (
+                                    <li>
+                                        <span
+                                            class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+                                        >
+                                            <tag.icon class="size-4" />
+                                            {tag.name}
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <div class="flex flex-col gap-y-2 mt-2 text-gray-700 dark:text-gray-400">
+                                <div class="leading-relaxed">
+                                    <p>{desc1}</p>
+                                    <span class="hidden" id="more-text">
+                                        <p>{desc2}</p>
+                                        <p>{desc3}</p>
+                                    </span>
+                                    <button
+                                        id="toggle-btn"
+                                        class=" text-lime-500 focus:outline-none"
+                                    >
+                                        Read More
+                                    </button>
+                                    <button
+                                        id="hide-btn"
+                                        class="hidden text-lime-500 focus:outline-none"
+                                    >
+                                        Read Less
+                                    </button>
+                                </div>
+                            </div>
+                            <footer class="flex items-end justify-start mt-4 gap-x-4">
+                                {github && (
+                                    <LinkButton href={github}>
+                                        <GitHub class="size-6" />
+                                        Code
+                                    </LinkButton>
+                                )}
+                                {link && (
+                                    <LinkButton href={link}>
+                                        <Link class="size-4" />
+                                        Preview
+                                    </LinkButton>
+                                )}
+                            </footer>
+                        </div>
+                    </div>
+                </article>
+            ),
+        )
     }
+
+    <script is:inline>
+        const moreTextEl = document.getElementById("more-text");
+        const toggleBtnEl = document.getElementById("toggle-btn");
+        const hideBtnEl = document.getElementById("hide-btn");
+
+        toggleBtnEl.addEventListener("click", () => {
+            moreTextEl.classList.toggle("hidden");
+            toggleBtnEl.classList.toggle("hidden");
+            hideBtnEl.classList.toggle("hidden");
+        });
+
+        hideBtnEl.addEventListener("click", () => {
+            moreTextEl.classList.toggle("hidden");
+            toggleBtnEl.classList.toggle("hidden");
+            hideBtnEl.classList.toggle("hidden");
+        });
+    </script>
 </div>
