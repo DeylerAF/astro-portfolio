@@ -2,6 +2,13 @@
 import GitHub from "./icons/GitHub.astro";
 import Django from "./icons/Django.astro";
 import Tailwind from "./icons/Tailwind.astro";
+import React from "./icons/React.astro";
+import Python from "./icons/Python.astro";
+import TypeScript from "./icons/TypeScript.astro";
+import PostgreSQL from "./icons/PostgreSQL.astro";
+import Docker from "./icons/Docker.astro";
+import AWS from "./icons/AWS.astro";
+import Cloudflare from "./icons/Cloudflare.astro";
 import Link from "./icons/Link.astro";
 import LinkButton from "./LinkButton.astro";
 import Image from "astro/components/Image.astro";
@@ -9,25 +16,70 @@ import Image from "astro/components/Image.astro";
 const TAGS = {
     DJANGO: {
         name: "Django",
-        class: "bg-black text-white",
+        class: "text-black dark:text-white bg-[#44b78b]/25 border border-[#44b78b] backdrop-blur",
         icon: Django,
     },
     TAILWIND: {
         name: "Tailwind CSS",
-        class: "bg-[#003159] text-white",
+        class: "text-black dark:text-white bg-[#003159]/25 border border-[#003159] backdrop-blur",
         icon: Tailwind,
+    },
+    REACT: {
+        name: "React",
+        class: "text-black dark:text-white bg-[#61DAFB]/25 border border-[#61DAFB] backdrop-blur",
+        icon: React,
+    },
+    PYTHON: {
+        name: "Python",
+        class: "text-black dark:text-white bg-[#3776AB]/25 border border-[#3776AB] backdrop-blur",
+        icon: Python,
+    },
+    TYPESCRIPT: {
+        name: "TypeScript",
+        class: "text-black dark:text-white bg-[#007ACC]/25 border border-[#007ACC] backdrop-blur",
+        icon: TypeScript,
+    },
+    POSTGRESQL: {
+        name: "PostgreSQL",
+        class: "text-black dark:text-white bg-[#336791]/25 border border-[#336791] backdrop-blur",
+        icon: PostgreSQL,
+    },
+    DOCKER: {
+        name: "Docker",
+        class: "text-black dark:text-white bg-[#2496ED]/25 border border-[#2496ED] backdrop-blur",
+        icon: Docker,
+    },
+    AWS: {
+        name: "AWS",
+        class: "text-black dark:text-white bg-[#232F3E]/25 dark:bg-gray-200/25 border border-[#232F3E] dark:border-gray-500 backdrop-blur",
+        icon: AWS,
+    },
+    CLOUDFLARE: {
+        name: "Cloudflare",
+        class: "text-black dark:text-white bg-[#F38020]/25 border border-[#F38020] backdrop-blur",
+        icon: Cloudflare,
     },
 };
 const PROJECTS = [
     {
         title: "PandaShop",
-        desc1: "This is a functional example of the personal project I am working on. I designed and implemented an eCommerce website using Django REST framework for the backend and React for the frontend.",
+        desc1: "This is not the real project is just an example of the personal project I am working on. I designed and implemented an eCommerce website using Django REST framework for the backend and React for the frontend.",
         desc2: "The project includes features such as product listings, user authentication, and shopping cart functionality. To ensure scalability and performance, I deployed the application on an AWS EC2 instance and leveraged Cloudflare for secure and efficient content delivery.",
         desc3: "I continue working on the project to implement more functionalities to make it more attractive and be able to offer it to businesses near the area where I live that only have a physical store and are looking for ways to take their business online.",
         link: "https://pandashop.deyleraf.dev/",
         github: "https://github.com/DeylerAF/ecommerce-django-react-example",
         image: "/images/projects/PandaShop.webp",
-        tags: [TAGS.DJANGO, TAGS.TAILWIND],
+        tags: [
+            TAGS.PYTHON,
+            TAGS.TYPESCRIPT,
+            TAGS.DJANGO,
+            TAGS.REACT,
+            TAGS.TAILWIND,
+            TAGS.POSTGRESQL,
+            TAGS.AWS,
+            TAGS.CLOUDFLARE,
+            TAGS.DOCKER,
+        ],
     },
 ];
 ---
@@ -36,27 +88,27 @@ const PROJECTS = [
     {
         PROJECTS.map(
             ({ image, title, desc1, desc2, desc3, tags, link, github }) => (
-                <article class="flex flex-col space-x-0 space-y-8 md:flex-row md:space-x-8 md:space-y-0">
+                <article class="flex flex-col md:flex-row gap-4">
                     <div class="w-full md:w-1/2">
-                        <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:hover:-translate-y-1 md:hover:shadow-2xl lg:border lg:border-lime-600/50 lg:hover:border-lime-500/75 lg:hover:bg-lime-600/10">
+                        <div class="relative flex flex-col items-center translate-y-2 col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform overflow-clip rounded-xl sm:rounded-xl md:border md:border-lime-600/50 md:hover:border-lime-500/75 md:bg-lime-600/10 md:hover:bg-lime-600/20 md:backdrop-blur">
                             <Image
                                 width={300}
                                 height={300}
                                 src={image}
                                 alt="PandaShop"
-                                class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:hover:scale-105"
+                                class="object-cover object-top w-full transition duration-500 md:hover:scale-105"
                                 style="object-position: 50% 50%"
                                 loading={"eager"}
                             />
                         </div>
                     </div>
 
-                    <div class="w-full md:w-1/2 md:max-w-lg">
+                    <div class="w-full md:w-1/2 md:max-w-lg m-0">
                         <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
                             {title}
                         </h3>
                         <div class="flex flex-wrap mt-2">
-                            <ul class="flex flex-row mb-2 gap-x-2">
+                            <ul class="flex flex-wrap mb-2 gap-2">
                                 {tags.map((tag) => (
                                     <li>
                                         <span
@@ -69,7 +121,7 @@ const PROJECTS = [
                                 ))}
                             </ul>
 
-                            <div class="flex flex-col gap-y-2 mt-2 text-gray-700 dark:text-gray-400">
+                            <div class="flex flex-col gap-y-2 mt-2 text-black dark:text-white/80">
                                 <div class="leading-relaxed">
                                     <p>{desc1}</p>
                                     <span class="hidden" id="more-text">
@@ -78,13 +130,13 @@ const PROJECTS = [
                                     </span>
                                     <button
                                         id="toggle-btn"
-                                        class=" text-lime-500 focus:outline-none"
+                                        class=" text-lime-600 dark:text-lime-400 focus:outline-none"
                                     >
                                         Read More
                                     </button>
                                     <button
                                         id="hide-btn"
-                                        class="hidden text-lime-500 focus:outline-none"
+                                        class="hidden text-lime-600 dark:text-lime-400 focus:outline-none"
                                     >
                                         Read Less
                                     </button>
