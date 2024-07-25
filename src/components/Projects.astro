@@ -1,17 +1,19 @@
 ---
-import GitHub from "./icons/GitHub.astro";
-import Django from "./icons/Django.astro";
-import Tailwind from "./icons/Tailwind.astro";
-import React from "./icons/React.astro";
-import Python from "./icons/Python.astro";
-import TypeScript from "./icons/TypeScript.astro";
-import PostgreSQL from "./icons/PostgreSQL.astro";
-import Docker from "./icons/Docker.astro";
-import AWS from "./icons/AWS.astro";
-import Cloudflare from "./icons/Cloudflare.astro";
+import GitHub from "./icons/projects-icons/GitHub.astro";
+import Django from "./icons/projects-icons/Django.astro";
+import Tailwind from "./icons/projects-icons/Tailwind.astro";
+import React from "./icons/projects-icons/React.astro";
+import Python from "./icons/projects-icons/Python.astro";
+import TypeScript from "./icons/projects-icons/TypeScript.astro";
+import PostgreSQL from "./icons/projects-icons/PostgreSQL.astro";
+import Docker from "./icons/projects-icons/Docker.astro";
+import AWS from "./icons/projects-icons/AWS.astro";
+import Cloudflare from "./icons/projects-icons/Cloudflare.astro";
 import Link from "./icons/Link.astro";
 import LinkButton from "./LinkButton.astro";
 import Image from "astro/components/Image.astro";
+import WordPress from "./icons/projects-icons/WordPress.astro";
+import ACF from "./icons/projects-icons/ACF.astro";
 
 const TAGS = {
     DJANGO: {
@@ -59,6 +61,11 @@ const TAGS = {
         class: "text-black dark:text-white bg-[#F38020]/25 border border-[#F38020] backdrop-blur",
         icon: Cloudflare,
     },
+    ACF: {
+        name: "Advanced Custom Fields",
+        class: "text-black dark:text-white bg-[#2496ED]/25 border border-[#2496ED] backdrop-blur",
+        icon: ACF,
+    },
 };
 const PROJECTS = [
     {
@@ -71,6 +78,26 @@ const PROJECTS = [
         image: "/images/projects/PandaShop.webp",
         tags: [
             TAGS.PYTHON,
+            TAGS.TYPESCRIPT,
+            TAGS.DJANGO,
+            TAGS.REACT,
+            TAGS.TAILWIND,
+            TAGS.POSTGRESQL,
+            TAGS.AWS,
+            TAGS.CLOUDFLARE,
+            TAGS.DOCKER,
+        ],
+    },
+    {
+        title: "PandaShop",
+        desc1: "This is not the real project is just an example of the personal project I am working on. I designed and implemented an eCommerce website using Django REST framework for the backend and React for the frontend.",
+        desc2: "The project includes features such as product listings, user authentication, and shopping cart functionality. To ensure scalability and performance, I deployed the application on an AWS EC2 instance and leveraged Cloudflare for secure and efficient content delivery.",
+        desc3: "I continue working on the project to implement more functionalities to make it more attractive and be able to offer it to businesses near the area where I live that only have a physical store and are looking for ways to take their business online.",
+        link: "https://pandashop.deyleraf.dev/",
+        github: "https://github.com/DeylerAF/ecommerce-django-react-example",
+        image: "/images/projects/PandaShop.webp",
+        tags: [
+            TAGS.ACF,
             TAGS.TYPESCRIPT,
             TAGS.DJANGO,
             TAGS.REACT,
