@@ -13,9 +13,24 @@ import Link from "./icons/Link.astro";
 import LinkButton from "./LinkButton.astro";
 import Image from "astro/components/Image.astro";
 import WordPress from "./icons/projects-icons/WordPress.astro";
+import WooCommerce from "./icons/projects-icons/WooCommerce.astro";
 import ACF from "./icons/projects-icons/ACF.astro";
+import Webpack from "./icons/projects-icons/Webpack.astro";
+import SASS from "./icons/projects-icons/SASS.astro";
+import MySQL from "./icons/projects-icons/MySQL.astro";
+import Git from "./icons/projects-icons/Git.astro";
+import CSS from "./icons/projects-icons/CSS.astro";
+import HTML from "./icons/projects-icons/HTML.astro";
+import PHP from "./icons/projects-icons/PHP.astro";
+import JavaScript from "./icons/projects-icons/JavaScript.astro";
 
 const TAGS = {
+  JAVASCRIPT: {
+    name: "JavaScript",
+    class:
+      "text-black dark:text-white bg-[#F7DF1E]/25 border border-[#F7DF1E] backdrop-blur",
+    icon: JavaScript,
+  },
   DJANGO: {
     name: "Django",
     class:
@@ -70,11 +85,65 @@ const TAGS = {
       "text-black dark:text-white bg-[#F38020]/25 border border-[#F38020] backdrop-blur",
     icon: Cloudflare,
   },
+  WORDPRESS: {
+    name: "WordPress",
+    class:
+      "text-black dark:text-white bg-[#21759B]/25 border border-[#21759B] backdrop-blur",
+    icon: WordPress,
+  },
+  WOOCOMMERCE: {
+    name: "WooCommerce",
+    class:
+      "text-black dark:text-white bg-[#96588A]/25 border border-[#96588A] backdrop-blur",
+    icon: WooCommerce,
+  },
+  PHP: {
+    name: "PHP",
+    class:
+      "text-black dark:text-white bg-[#8892BF]/25 border border-[#8892BF] backdrop-blur",
+    icon: PHP,
+  },
   ACF: {
     name: "Advanced Custom Fields",
     class:
-      "text-black dark:text-white bg-[#2496ED]/25 border border-[#2496ED] backdrop-blur",
+      "text-black dark:text-white bg-[#44b78b]/25 border border-[#44b78b] backdrop-blur",
     icon: ACF,
+  },
+  WEBPACK: {
+    name: "Webpack",
+    class:
+      "text-black dark:text-white bg-[#8DD6F9]/25 border border-[#8DD6F9] backdrop-blur",
+    icon: Webpack,
+  },
+  SASS: {
+    name: "SASS",
+    class:
+      "text-black dark:text-white bg-[#CC6699]/25 border border-[#CC6699] backdrop-blur",
+    icon: SASS,
+  },
+  MYSQL: {
+    name: "MySQL",
+    class:
+      "text-black dark:text-white bg-[#4479A1]/25 border border-[#4479A1] backdrop-blur",
+    icon: MySQL,
+  },
+  GIT: {
+    name: "Git",
+    class:
+      "text-black dark:text-white bg-[#F05032]/25 border border-[#F05032] backdrop-blur",
+    icon: Git,
+  },
+  CSS: {
+    name: "CSS",
+    class:
+      "text-black dark:text-white bg-[#1572B6]/25 border border-[#1572B6] backdrop-blur",
+    icon: CSS,
+  },
+  HTML: {
+    name: "HTML",
+    class:
+      "text-black dark:text-white bg-[#E34F26]/25 border border-[#E34F26] backdrop-blur",
+    icon: HTML,
   },
 };
 const PROJECTS = [
@@ -86,19 +155,17 @@ const PROJECTS = [
       "Leveraging WordPress, WooCommerce, and Advanced Custom Fields (ACF), the platform offers a comprehensive suite of features tailored for an optimal user experience.",
     desc3:
       "The project includes features such as product listings, user authentication, and shopping cart functionality.",
-    link: "https://pandashop.deyleraf.dev/",
-    github: "https://github.com/DeylerAF/ecommerce-django-react-example",
+    link: "https://akdmy.pentaseis.com/",
     image: "/images/projects/AcademyADN.webp",
     tags: [
+      TAGS.WORDPRESS,
+      TAGS.WOOCOMMERCE,
       TAGS.ACF,
-      TAGS.TYPESCRIPT,
-      TAGS.DJANGO,
-      TAGS.REACT,
-      TAGS.TAILWIND,
-      TAGS.POSTGRESQL,
-      TAGS.AWS,
-      TAGS.CLOUDFLARE,
-      TAGS.DOCKER,
+      TAGS.PHP,
+      TAGS.JAVASCRIPT,
+      TAGS.GIT,
+      TAGS.SASS,
+      TAGS.WEBPACK,
     ],
   },
   {
@@ -109,19 +176,15 @@ const PROJECTS = [
       "The platform, built using WordPress and Advanced Custom Fields (ACF), offers a comprehensive suite of features to enhance the user experience. It enables seamless navigation and access to essential information about the center’s services and treatment options.",
     desc3:
       "Through this user-friendly and informative platform, Centro Médico del Pie CR aims to make your journey towards foot health as smooth and effective as possible.",
-    link: "https://pandashop.deyleraf.dev/",
-    github: "https://github.com/DeylerAF/ecommerce-django-react-example",
+    link: "https://centrodelpiecr.com/",
     image: "/images/projects/CentroDelPieCR.webp",
     tags: [
+      TAGS.WORDPRESS,
       TAGS.ACF,
-      TAGS.TYPESCRIPT,
-      TAGS.DJANGO,
-      TAGS.REACT,
-      TAGS.TAILWIND,
-      TAGS.POSTGRESQL,
-      TAGS.AWS,
-      TAGS.CLOUDFLARE,
-      TAGS.DOCKER,
+      TAGS.PHP,
+      TAGS.JAVASCRIPT,
+      TAGS.SASS,
+      TAGS.GIT,
     ],
   },
   {
@@ -194,14 +257,10 @@ const PROJECTS = [
                     <p>{desc2}</p>
                     <p>{desc3}</p>
                   </span>
-                  <button
-                    class="toggle-btn text-lime-600 dark:text-lime-400 focus:outline-none"
-                  >
+                  <button class="toggle-btn text-lime-600 dark:text-lime-400 focus:outline-none">
                     Read More
                   </button>
-                  <button
-                    class="hidden hide-btn text-lime-600 dark:text-lime-400 focus:outline-none"
-                  >
+                  <button class="hidden hide-btn text-lime-600 dark:text-lime-400 focus:outline-none">
                     Read Less
                   </button>
                 </div>
@@ -227,29 +286,29 @@ const PROJECTS = [
     )
   }
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const articles = document.querySelectorAll('article');
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const articles = document.querySelectorAll("article");
 
-    articles.forEach((article) => {
-      const moreTextEl = article.querySelector('.more-text');
-      const toggleBtnEl = article.querySelector('.toggle-btn');
-      const hideBtnEl = article.querySelector('.hide-btn');
+      articles.forEach((article) => {
+        const moreTextEl = article.querySelector(".more-text");
+        const toggleBtnEl = article.querySelector(".toggle-btn");
+        const hideBtnEl = article.querySelector(".hide-btn");
 
-      if (moreTextEl && toggleBtnEl && hideBtnEl) {
-        toggleBtnEl.addEventListener('click', () => {
-          moreTextEl.classList.toggle('hidden');
-          toggleBtnEl.classList.toggle('hidden');
-          hideBtnEl.classList.toggle('hidden');
-        });
+        if (moreTextEl && toggleBtnEl && hideBtnEl) {
+          toggleBtnEl.addEventListener("click", () => {
+            moreTextEl.classList.toggle("hidden");
+            toggleBtnEl.classList.toggle("hidden");
+            hideBtnEl.classList.toggle("hidden");
+          });
 
-        hideBtnEl.addEventListener('click', () => {
-          moreTextEl.classList.toggle('hidden');
-          toggleBtnEl.classList.toggle('hidden');
-          hideBtnEl.classList.toggle('hidden');
-        });
-      }
+          hideBtnEl.addEventListener("click", () => {
+            moreTextEl.classList.toggle("hidden");
+            toggleBtnEl.classList.toggle("hidden");
+            hideBtnEl.classList.toggle("hidden");
+          });
+        }
+      });
     });
-  });
-</script>
+  </script>
 </div>
