@@ -8,8 +8,9 @@ dist/
 # macOS-specific files
 .DS_Store
 
-# jetbrains setting folder
+# IDE setting folder
 .idea/
+.idx/
 
 #vscode
 .vscode/*
@@ -146,3 +147,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# lock files
+*lock.json
