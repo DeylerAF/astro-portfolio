@@ -7,8 +7,16 @@ import eslintPluginAstro from "eslint-plugin-astro";
 export default [
     { files: ["**/*.{js,mjs,cjs,ts,astro}"] },
     { ignores: ["dist/*", ".astro/*"] },
+    {
+        rules: {
+            "no-console": "warn",
+            quotes: ["error", "double"],
+            semi: ["error", "always"],
+            "comma-dangle": ["error", "never"]
+        }
+    },
     { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
     pluginJs.configs.recommended,
     ...tseslint.configs.recommended,
-    ...eslintPluginAstro.configs.recommended,
+    ...eslintPluginAstro.configs.recommended
 ];

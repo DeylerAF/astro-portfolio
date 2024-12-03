@@ -9,5 +9,5 @@ export default defineConfig({
     integrations: [tailwind(), robotsTxt()],
     site: "https://deyleraf.dev",
     output: "server",
-    adapter: cloudflare(),
+    adapter: cloudflare()
 });
