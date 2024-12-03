@@ -25,290 +25,261 @@ import PHP from "./icons/projects-icons/PHP.astro";
 import JavaScript from "./icons/projects-icons/JavaScript.astro";
 
 const TAGS = {
-  JAVASCRIPT: {
-    name: "JavaScript",
-    class:
-      "text-black dark:text-white bg-[#F7DF1E]/25 border border-[#F7DF1E] backdrop-blur",
-    icon: JavaScript,
-  },
-  DJANGO: {
-    name: "Django",
-    class:
-      "text-black dark:text-white bg-[#44b78b]/25 border border-[#44b78b] backdrop-blur",
-    icon: Django,
-  },
-  TAILWIND: {
-    name: "Tailwind CSS",
-    class:
-      "text-black dark:text-white bg-[#003159]/25 border border-[#003159] backdrop-blur",
-    icon: Tailwind,
-  },
-  REACT: {
-    name: "React",
-    class:
-      "text-black dark:text-white bg-[#61DAFB]/25 border border-[#61DAFB] backdrop-blur",
-    icon: React,
-  },
-  PYTHON: {
-    name: "Python",
-    class:
-      "text-black dark:text-white bg-[#FFC331]/25 border border-[#FFC331] backdrop-blur",
-    icon: Python,
-  },
-  TYPESCRIPT: {
-    name: "TypeScript",
-    class:
-      "text-black dark:text-white bg-[#007ACC]/25 border border-[#007ACC] backdrop-blur",
-    icon: TypeScript,
-  },
-  POSTGRESQL: {
-    name: "PostgreSQL",
-    class:
-      "text-black dark:text-white bg-[#336791]/25 border border-[#336791] backdrop-blur",
-    icon: PostgreSQL,
-  },
-  DOCKER: {
-    name: "Docker",
-    class:
-      "text-black dark:text-white bg-[#2496ED]/25 border border-[#2496ED] backdrop-blur",
-    icon: Docker,
-  },
-  AWS: {
-    name: "AWS",
-    class:
-      "text-black dark:text-white bg-[#232F3E]/25 dark:bg-gray-200/25 border border-[#232F3E] dark:border-gray-500 backdrop-blur",
-    icon: AWS,
-  },
-  CLOUDFLARE: {
-    name: "Cloudflare",
-    class:
-      "text-black dark:text-white bg-[#F38020]/25 border border-[#F38020] backdrop-blur",
-    icon: Cloudflare,
-  },
-  WORDPRESS: {
-    name: "WordPress",
-    class:
-      "text-black dark:text-white bg-[#21759B]/25 border border-[#21759B] backdrop-blur",
-    icon: WordPress,
-  },
-  WOOCOMMERCE: {
-    name: "WooCommerce",
-    class:
-      "text-black dark:text-white bg-[#96588A]/25 border border-[#96588A] backdrop-blur",
-    icon: WooCommerce,
-  },
-  PHP: {
-    name: "PHP",
-    class:
-      "text-black dark:text-white bg-[#8892BF]/25 border border-[#8892BF] backdrop-blur",
-    icon: PHP,
-  },
-  ACF: {
-    name: "Advanced Custom Fields",
-    class:
-      "text-black dark:text-white bg-[#44b78b]/25 border border-[#44b78b] backdrop-blur",
-    icon: ACF,
-  },
-  WEBPACK: {
-    name: "Webpack",
-    class:
-      "text-black dark:text-white bg-[#8DD6F9]/25 border border-[#8DD6F9] backdrop-blur",
-    icon: Webpack,
-  },
-  SASS: {
-    name: "SASS",
-    class:
-      "text-black dark:text-white bg-[#CC6699]/25 border border-[#CC6699] backdrop-blur",
-    icon: SASS,
-  },
-  MYSQL: {
-    name: "MySQL",
-    class:
-      "text-black dark:text-white bg-[#4479A1]/25 border border-[#4479A1] backdrop-blur",
-    icon: MySQL,
-  },
-  GIT: {
-    name: "Git",
-    class:
-      "text-black dark:text-white bg-[#F05032]/25 border border-[#F05032] backdrop-blur",
-    icon: Git,
-  },
-  CSS: {
-    name: "CSS",
-    class:
-      "text-black dark:text-white bg-[#1572B6]/25 border border-[#1572B6] backdrop-blur",
-    icon: CSS,
-  },
-  HTML: {
-    name: "HTML",
-    class:
-      "text-black dark:text-white bg-[#E34F26]/25 border border-[#E34F26] backdrop-blur",
-    icon: HTML,
-  },
+    JAVASCRIPT: {
+        name: "JavaScript",
+        class: "text-black dark:text-white bg-[#F7DF1E]/25 border border-[#F7DF1E] backdrop-blur",
+        icon: JavaScript,
+    },
+    DJANGO: {
+        name: "Django",
+        class: "text-black dark:text-white bg-[#44b78b]/25 border border-[#44b78b] backdrop-blur",
+        icon: Django,
+    },
+    TAILWIND: {
+        name: "Tailwind CSS",
+        class: "text-black dark:text-white bg-[#003159]/25 border border-[#003159] backdrop-blur",
+        icon: Tailwind,
+    },
+    REACT: {
+        name: "React",
+        class: "text-black dark:text-white bg-[#61DAFB]/25 border border-[#61DAFB] backdrop-blur",
+        icon: React,
+    },
+    PYTHON: {
+        name: "Python",
+        class: "text-black dark:text-white bg-[#FFC331]/25 border border-[#FFC331] backdrop-blur",
+        icon: Python,
+    },
+    TYPESCRIPT: {
+        name: "TypeScript",
+        class: "text-black dark:text-white bg-[#007ACC]/25 border border-[#007ACC] backdrop-blur",
+        icon: TypeScript,
+    },
+    POSTGRESQL: {
+        name: "PostgreSQL",
+        class: "text-black dark:text-white bg-[#336791]/25 border border-[#336791] backdrop-blur",
+        icon: PostgreSQL,
+    },
+    DOCKER: {
+        name: "Docker",
+        class: "text-black dark:text-white bg-[#2496ED]/25 border border-[#2496ED] backdrop-blur",
+        icon: Docker,
+    },
+    AWS: {
+        name: "AWS",
+        class: "text-black dark:text-white bg-[#232F3E]/25 dark:bg-gray-200/25 border border-[#232F3E] dark:border-gray-500 backdrop-blur",
+        icon: AWS,
+    },
+    CLOUDFLARE: {
+        name: "Cloudflare",
+        class: "text-black dark:text-white bg-[#F38020]/25 border border-[#F38020] backdrop-blur",
+        icon: Cloudflare,
+    },
+    WORDPRESS: {
+        name: "WordPress",
+        class: "text-black dark:text-white bg-[#21759B]/25 border border-[#21759B] backdrop-blur",
+        icon: WordPress,
+    },
+    WOOCOMMERCE: {
+        name: "WooCommerce",
+        class: "text-black dark:text-white bg-[#96588A]/25 border border-[#96588A] backdrop-blur",
+        icon: WooCommerce,
+    },
+    PHP: {
+        name: "PHP",
+        class: "text-black dark:text-white bg-[#8892BF]/25 border border-[#8892BF] backdrop-blur",
+        icon: PHP,
+    },
+    ACF: {
+        name: "Advanced Custom Fields",
+        class: "text-black dark:text-white bg-[#44b78b]/25 border border-[#44b78b] backdrop-blur",
+        icon: ACF,
+    },
+    WEBPACK: {
+        name: "Webpack",
+        class: "text-black dark:text-white bg-[#8DD6F9]/25 border border-[#8DD6F9] backdrop-blur",
+        icon: Webpack,
+    },
+    SASS: {
+        name: "SASS",
+        class: "text-black dark:text-white bg-[#CC6699]/25 border border-[#CC6699] backdrop-blur",
+        icon: SASS,
+    },
+    MYSQL: {
+        name: "MySQL",
+        class: "text-black dark:text-white bg-[#4479A1]/25 border border-[#4479A1] backdrop-blur",
+        icon: MySQL,
+    },
+    GIT: {
+        name: "Git",
+        class: "text-black dark:text-white bg-[#F05032]/25 border border-[#F05032] backdrop-blur",
+        icon: Git,
+    },
+    CSS: {
+        name: "CSS",
+        class: "text-black dark:text-white bg-[#1572B6]/25 border border-[#1572B6] backdrop-blur",
+        icon: CSS,
+    },
+    HTML: {
+        name: "HTML",
+        class: "text-black dark:text-white bg-[#E34F26]/25 border border-[#E34F26] backdrop-blur",
+        icon: HTML,
+    },
 };
 const PROJECTS = [
-  {
-    title: "ADN Academy",
-    desc1:
-      "It is a virtual health and wellness education platform that understands the needs and what is really important to users.",
-    desc2:
-      "Leveraging WordPress, WooCommerce, and Advanced Custom Fields (ACF), the platform offers a comprehensive suite of features tailored for an optimal user experience.",
-    desc3:
-      "The project includes features such as product listings, user authentication, and shopping cart functionality.",
-    link: "https://akdmy.pentaseis.com/",
-    image: "/images/projects/AcademyADN.webp",
-    tags: [
-      TAGS.WORDPRESS,
-      TAGS.WOOCOMMERCE,
-      TAGS.ACF,
-      TAGS.PHP,
-      TAGS.JAVASCRIPT,
-      TAGS.GIT,
-      TAGS.SASS,
-      TAGS.WEBPACK,
-    ],
-  },
-  {
-    title: "Centro Médico del Pie CR",
-    desc1:
-      "Is dedicated to prioritizing the health and well-being of your feet. With a focus on delivering specialized care, the center offers tailored processes and treatments to address various foot conditions effectively.",
-    desc2:
-      "The platform, built using WordPress and Advanced Custom Fields (ACF), offers a comprehensive suite of features to enhance the user experience. It enables seamless navigation and access to essential information about the center’s services and treatment options.",
-    desc3:
-      "Through this user-friendly and informative platform, Centro Médico del Pie CR aims to make your journey towards foot health as smooth and effective as possible.",
-    link: "https://centrodelpiecr.com/",
-    image: "/images/projects/CentroDelPieCR.webp",
-    tags: [
-      TAGS.WORDPRESS,
-      TAGS.ACF,
-      TAGS.PHP,
-      TAGS.JAVASCRIPT,
-      TAGS.SASS,
-      TAGS.GIT,
-    ],
-  },
-  {
-    title: "PandaShop",
-    desc1:
-      "This is not the real project is just an example of the personal project I am working on. I designed and implemented an eCommerce website using Django REST framework for the backend and React for the frontend.",
-    desc2:
-      "The project includes features such as product listings, user authentication, and shopping cart functionality. To ensure scalability and performance, I deployed the application on an AWS EC2 instance and leveraged Cloudflare for secure and efficient content delivery.",
-    desc3:
-      "I continue working on the project to implement more functionalities to make it more attractive and be able to offer it to businesses near the area where I live that only have a physical store and are looking for ways to take their business online.",
-    link: "https://pandashop.deyleraf.dev/",
-    github: "https://github.com/DeylerAF/ecommerce-django-react-example",
-    image: "/images/projects/PandaShop.webp",
-    tags: [
-      TAGS.PYTHON,
-      TAGS.TYPESCRIPT,
-      TAGS.DJANGO,
-      TAGS.REACT,
-      TAGS.TAILWIND,
-      TAGS.POSTGRESQL,
-      TAGS.AWS,
-      TAGS.CLOUDFLARE,
-      TAGS.DOCKER,
-    ],
-  },
+    {
+        title: "ADN Academy",
+        desc1: "It is a virtual health and wellness education platform that understands the needs and what is really important to users.",
+        desc2: "Leveraging WordPress, WooCommerce, and Advanced Custom Fields (ACF), the platform offers a comprehensive suite of features tailored for an optimal user experience.",
+        desc3: "The project includes features such as product listings, user authentication, and shopping cart functionality.",
+        link: "https://akdmy.pentaseis.com/",
+        image: "/images/projects/AcademyADN.webp",
+        tags: [
+            TAGS.WORDPRESS,
+            TAGS.WOOCOMMERCE,
+            TAGS.ACF,
+            TAGS.PHP,
+            TAGS.JAVASCRIPT,
+            TAGS.GIT,
+            TAGS.SASS,
+            TAGS.WEBPACK,
+        ],
+    },
+    {
+        title: "Centro Médico del Pie CR",
+        desc1: "Is dedicated to prioritizing the health and well-being of your feet. With a focus on delivering specialized care, the center offers tailored processes and treatments to address various foot conditions effectively.",
+        desc2: "The platform, built using WordPress and Advanced Custom Fields (ACF), offers a comprehensive suite of features to enhance the user experience. It enables seamless navigation and access to essential information about the center’s services and treatment options.",
+        desc3: "Through this user-friendly and informative platform, Centro Médico del Pie CR aims to make your journey towards foot health as smooth and effective as possible.",
+        link: "https://centrodelpiecr.com/",
+        image: "/images/projects/CentroDelPieCR.webp",
+        tags: [
+            TAGS.WORDPRESS,
+            TAGS.ACF,
+            TAGS.PHP,
+            TAGS.JAVASCRIPT,
+            TAGS.SASS,
+            TAGS.GIT,
+        ],
+    },
+    {
+        title: "PandaShop",
+        desc1: "This is not the real project is just an example of the personal project I am working on. I designed and implemented an eCommerce website using Django REST framework for the backend and React for the frontend.",
+        desc2: "The project includes features such as product listings, user authentication, and shopping cart functionality. To ensure scalability and performance, I deployed the application on an AWS EC2 instance and leveraged Cloudflare for secure and efficient content delivery.",
+        desc3: "I continue working on the project to implement more functionalities to make it more attractive and be able to offer it to businesses near the area where I live that only have a physical store and are looking for ways to take their business online.",
+        link: "https://pandashop.deyleraf.dev/",
+        github: "https://github.com/DeylerAF/ecommerce-django-react-example",
+        image: "/images/projects/PandaShop.webp",
+        tags: [
+            TAGS.PYTHON,
+            TAGS.TYPESCRIPT,
+            TAGS.DJANGO,
+            TAGS.REACT,
+            TAGS.TAILWIND,
+            TAGS.POSTGRESQL,
+            TAGS.AWS,
+            TAGS.CLOUDFLARE,
+            TAGS.DOCKER,
+        ],
+    },
 ];
 ---
 
 <div class="flex flex-col gap-y-16">
-  {
-    PROJECTS.map(
-      ({ image, title, desc1, desc2, desc3, tags, link, github }) => (
-        <article class="flex flex-col md:flex-row gap-4">
-          <div class="w-full md:w-1/2">
-            <div class="relative flex flex-col items-center translate-y-2 col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform overflow-clip rounded-xl sm:rounded-xl md:border md:border-lime-600/50 md:hover:border-lime-500/75 md:bg-lime-600/10 md:hover:bg-lime-600/20 md:backdrop-blur">
-              <Image
-                width={300}
-                height={300}
-                src={image}
-                alt="PandaShop"
-                class="object-cover object-top w-full transition duration-500 md:hover:scale-105"
-                style="object-position: 50% 50%"
-                loading={"eager"}
-              />
-            </div>
-          </div>
+    {
+        PROJECTS.map(
+            ({ image, title, desc1, desc2, desc3, tags, link, github }) => (
+                <article class="flex flex-col md:flex-row gap-4">
+                    <div class="w-full md:w-1/2">
+                        <div class="relative flex flex-col items-center translate-y-2 col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform overflow-clip rounded-xl sm:rounded-xl md:border md:border-lime-600/50 md:hover:border-lime-500/75 md:bg-lime-600/10 md:hover:bg-lime-600/20 md:backdrop-blur">
+                            <Image
+                                width={300}
+                                height={300}
+                                src={image}
+                                alt="PandaShop"
+                                class="object-cover object-top w-full transition duration-500 md:hover:scale-105"
+                                style="object-position: 50% 50%"
+                                loading={"eager"}
+                            />
+                        </div>
+                    </div>
 
-          <div class="w-full md:w-1/2 md:max-w-lg m-0">
-            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
-              {title}
-            </h3>
-            <div class="flex flex-wrap mt-2">
-              <ul class="flex flex-wrap mb-2 gap-2">
-                {tags.map((tag) => (
-                  <li>
-                    <span
-                      class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
-                    >
-                      <tag.icon class="size-4" />
-                      {tag.name}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+                    <div class="w-full md:w-1/2 md:max-w-lg m-0">
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+                            {title}
+                        </h3>
+                        <div class="flex flex-wrap mt-2">
+                            <ul class="flex flex-wrap mb-2 gap-2">
+                                {tags.map((tag) => (
+                                    <li>
+                                        <span
+                                            class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+                                        >
+                                            <tag.icon class="size-4" />
+                                            {tag.name}
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
 
-              <div class="flex flex-col gap-y-2 mt-2 text-black dark:text-white/80">
-                <div class="leading-relaxed">
-                  <p>{desc1}</p>
-                  <span class="hidden more-text">
-                    <p>{desc2}</p>
-                    <p>{desc3}</p>
-                  </span>
-                  <button class="toggle-btn text-lime-600 dark:text-lime-400 focus:outline-none">
-                    Read More
-                  </button>
-                  <button class="hidden hide-btn text-lime-600 dark:text-lime-400 focus:outline-none">
-                    Read Less
-                  </button>
-                </div>
-              </div>
-              <footer class="flex items-end justify-start mt-4 gap-x-4">
-                {github && (
-                  <LinkButton href={github}>
-                    <GitHub class="size-6" />
-                    Code
-                  </LinkButton>
-                )}
-                {link && (
-                  <LinkButton href={link}>
-                    <Link class="size-4" />
-                    Preview
-                  </LinkButton>
-                )}
-              </footer>
-            </div>
-          </div>
-        </article>
-      )
-    )
-  }
+                            <div class="flex flex-col gap-y-2 mt-2 text-black dark:text-white/80">
+                                <div class="leading-relaxed">
+                                    <p>{desc1}</p>
+                                    <span class="hidden more-text">
+                                        <p>{desc2}</p>
+                                        <p>{desc3}</p>
+                                    </span>
+                                    <button class="toggle-btn text-lime-600 dark:text-lime-400 focus:outline-none">
+                                        Read More
+                                    </button>
+                                    <button class="hidden hide-btn text-lime-600 dark:text-lime-400 focus:outline-none">
+                                        Read Less
+                                    </button>
+                                </div>
+                            </div>
+                            <footer class="flex items-end justify-start mt-4 gap-x-4">
+                                {github && (
+                                    <LinkButton href={github}>
+                                        <GitHub class="size-6" />
+                                        Code
+                                    </LinkButton>
+                                )}
+                                {link && (
+                                    <LinkButton href={link}>
+                                        <Link class="size-4" />
+                                        Preview
+                                    </LinkButton>
+                                )}
+                            </footer>
+                        </div>
+                    </div>
+                </article>
+            )
+        )
+    }
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const articles = document.querySelectorAll("article");
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const articles = document.querySelectorAll("article");
 
-      articles.forEach((article) => {
-        const moreTextEl = article.querySelector(".more-text");
-        const toggleBtnEl = article.querySelector(".toggle-btn");
-        const hideBtnEl = article.querySelector(".hide-btn");
+            articles.forEach((article) => {
+                const moreTextEl = article.querySelector(".more-text");
+                const toggleBtnEl = article.querySelector(".toggle-btn");
+                const hideBtnEl = article.querySelector(".hide-btn");
 
-        if (moreTextEl && toggleBtnEl && hideBtnEl) {
-          toggleBtnEl.addEventListener("click", () => {
-            moreTextEl.classList.toggle("hidden");
-            toggleBtnEl.classList.toggle("hidden");
-            hideBtnEl.classList.toggle("hidden");
-          });
+                if (moreTextEl && toggleBtnEl && hideBtnEl) {
+                    toggleBtnEl.addEventListener("click", () => {
+                        moreTextEl.classList.toggle("hidden");
+                        toggleBtnEl.classList.toggle("hidden");
+                        hideBtnEl.classList.toggle("hidden");
+                    });
 
-          hideBtnEl.addEventListener("click", () => {
-            moreTextEl.classList.toggle("hidden");
-            toggleBtnEl.classList.toggle("hidden");
-            hideBtnEl.classList.toggle("hidden");
-          });
-        }
-      });
-    });
-  </script>
+                    hideBtnEl.addEventListener("click", () => {
+                        moreTextEl.classList.toggle("hidden");
+                        toggleBtnEl.classList.toggle("hidden");
+                        hideBtnEl.classList.toggle("hidden");
+                    });
+                }
+            });
+        });
+    </script>
 </div>

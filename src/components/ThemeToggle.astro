@@ -100,7 +100,7 @@ const THEMES = ["Light", "Dark", "Auto"];
     updateTheme();
 
     document.addEventListener("click", () =>
-        themesMenu.classList.remove("open"),
+        themesMenu.classList.remove("open")
     );
 
     document
@@ -115,7 +115,7 @@ const THEMES = ["Light", "Dark", "Auto"];
         element.addEventListener("click", (e) => {
             localStorage.setItem(
                 "theme",
-                e.target.innerText.toLowerCase().trim(),
+                e.target.innerText.toLowerCase().trim()
             );
             updateTheme();
         });

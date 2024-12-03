@@ -4,35 +4,47 @@ const personalImageAlt = "Deyler Alvarez Fernández";
 ---
 
 <article
-  class="flex flex-col items-center justify-center gap-8 text-gray-700 dark:text-gray-300 md:flex-row"
+    class="flex flex-col items-center justify-center gap-8 text-gray-700 dark:text-gray-300 md:flex-row"
 >
-  <div
-    class="[&>p]:mb-4 [&>p>strong]:text-lime-600 dark:[&>p>strong]:text-lime-400 [&>p>strong]:font-semibold [&>p>strong]:font-mono text-pretty order-2 md:order-1"
-  >
-    <p>
-      Hello! I’m Deyler Alvarez Fernández, a Full-Stack Developer based in La Fortuna de San Carlos, Costa Rica. With over four years of <strong>experience in creating responsive and user-friendly web applications</strong>, I specialize in translating UX designs into interactive and efficient web interfaces.
-      My expertise lies in <strong>leveraging JavaScript and modern frameworks</strong> to build seamless digital experiences.
-    </p>
-    <p>
-    <strong>Looking towards the future my goal is</strong> to further enhance my skills for in the future lead a dynamic team in a great company or even better <strong>launch my own digital solutions company</strong>. I aim to push the boundaries of innovation and deliver impactful, high-quality solutions.
-    </p>
-    <p>
-      If you’re excited about collaboration, exploring new tech possibilities, or discussing development strategies, let’s connect and see how we can achieve great things together!
-    </p>
-  </div>
-  <div class="order-1 md:order-2">
     <div
-      class="relative object-cover w-40 h-auto p-1 lg:p-2 mt-32 lg:mt-0 rotate-3 aspect-square rounded-2xl bg-lime-500/25 ring-1 ring-lime-600 dark:ring-lime-400 backdrop-blur-sm"
+        class="[&>p]:mb-4 [&>p>strong]:text-lime-600 dark:[&>p>strong]:text-lime-400 [&>p>strong]:font-semibold [&>p>strong]:font-mono text-pretty order-2 md:order-1"
     >
-      <Image
-        width="200"
-        height="200"
-        src="/images/me.webp"
-        alt={personalImageAlt}
-        class="absolute bottom-0"
-        style="object-position: 50% 50%"
-        loading={"eager"}
-      />
+        <p>
+            Hello! I’m Deyler Alvarez Fernández, a Full-Stack Developer based in
+            La Fortuna de San Carlos, Costa Rica. With over four years of <strong
+                >experience in creating responsive and user-friendly web
+                applications</strong
+            >, I specialize in translating UX designs into interactive and
+            efficient web interfaces. My expertise lies in <strong
+                >leveraging JavaScript and modern frameworks</strong
+            > to build seamless digital experiences.
+        </p>
+        <p>
+            <strong>Looking towards the future my goal is</strong> to further enhance
+            my skills for in the future lead a dynamic team in a great company or
+            even better <strong>launch my own digital solutions company</strong
+            >. I aim to push the boundaries of innovation and deliver impactful,
+            high-quality solutions.
+        </p>
+        <p>
+            If you’re excited about collaboration, exploring new tech
+            possibilities, or discussing development strategies, let’s connect
+            and see how we can achieve great things together!
+        </p>
     </div>
-  </div>
+    <div class="order-1 md:order-2">
+        <div
+            class="relative object-cover w-40 h-auto p-1 lg:p-2 mt-32 lg:mt-0 rotate-3 aspect-square rounded-2xl bg-lime-500/25 ring-1 ring-lime-600 dark:ring-lime-400 backdrop-blur-sm"
+        >
+            <Image
+                width="200"
+                height="200"
+                src="/images/me.webp"
+                alt={personalImageAlt}
+                class="absolute bottom-0"
+                style="object-position: 50% 50%"
+                loading={"eager"}
+            />
+        </div>
+    </div>
 </article>
