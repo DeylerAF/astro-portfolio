@@ -1,6 +1,5 @@
 ---
 const personalImageAlt = "Hi";
-import Badge from "@/components/Badge.astro";
 import LinkedInIcon from "@/components/icons/LinkedIn.astro";
 import GitHub from "@/components/icons/projects-icons/GitHub.astro";
 import SocialPill from "@/components/SocialPill.astro";
@@ -8,24 +7,14 @@ import Image from "astro/components/Image.astro";
 ---
 
 <div class="max-w-xl">
-    <div class="flex items-end gap-4 mb-4">
-        <Image
-            class="size-20 drop-shadow-[0px_0px_5px_rgba(0,0,0,0.5)] dark:drop-shadow-[0px_0px_5px_rgba(255,255,255,0.2)]"
-            src="/images/hi.webp"
-            alt={personalImageAlt}
-            loading={"eager"}
-            width={80}
-            height={80}
-        />
-        <a
-            href="https://www.linkedin.com/in/deyleraf/"
-            target="_blank"
-            rel="noopener"
-            class="flex items-center transition md:justify-center md:hover:scale-105"
-        >
-            <Badge>Open to work</Badge>
-        </a>
-    </div>
+    <Image
+        class="mb-4 size-20 drop-shadow-[0px_0px_5px_rgba(0,0,0,0.5)] dark:drop-shadow-[0px_0px_5px_rgba(255,255,255,0.2)]"
+        src="/images/hi.webp"
+        alt={personalImageAlt}
+        loading={"eager"}
+        width={80}
+        height={80}
+    />
     <h1
         class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white [&>strong]:text-lime-600 dark:[&>strong]:text-lime-400"
     >
