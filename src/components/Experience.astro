@@ -1,18 +1,53 @@
 ---
-import ExperienceItem from "./ExperienceItem.astro";
 import { getEngagements } from "@/lib/content";
+import { formatPeriod } from "@/lib/dates";
 
 const engagements = await getEngagements();
 ---
 
-<ol class="relative mt-16">
+<ol class="flex flex-col">
     {
-        engagements.map((engagement, index) => (
-            <li>
-                <ExperienceItem
-                    {...engagement}
-                    last={index === engagements.length - 1}
-                />
+        engagements.map((engagement) => (
+            <li class="grid gap-6 py-8 border-t border-rule last:border-b lg:grid-cols-[9rem_1fr_18rem] lg:gap-10">
+                <div class="flex flex-col gap-1">
+                    <time class="font-mono text-sm text-muted">
+                        {formatPeriod(engagement.start, engagement.end)}
+                    </time>
+                    {engagement.arrangement && (
+                        <span class="font-mono text-xs text-faint">
+                            {engagement.arrangement}
+                        </span>
+                    )}
+                </div>
+
+                <div class="flex flex-col gap-3">
+                    <h3 class="text-3xl font-semibold leading-tight font-display tracking-[-0.025em]">
+                        {engagement.url ? (
+                            <a
+                                href={engagement.url}
+                                target="_blank"
+                                rel="noopener"
+                                class="transition-colors hover:text-accent"
+                            >
+                                {engagement.client}
+                            </a>
+                        ) : (
+                            engagement.client
+                        )}
+                    </h3>
+                    <span class="text-base text-body">{engagement.role}</span>
+                    <p class="max-w-xl leading-relaxed text-muted">
+                        {engagement.summary}
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap self-start gap-2">
+                    {engagement.stack.map((item) => (
+                        <span class="px-2.5 py-1 font-mono text-xs border text-body border-rule">
+                            {item}
+                        </span>
+                    ))}
+                </div>
             </li>
         ))
     }

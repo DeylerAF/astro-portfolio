@@ -26,8 +26,19 @@ about:
     If you have a process that still runs on spreadsheets and email, or an
     application that has outgrown the way it was first built, that's the kind of
     work I enjoy most.
-focus:
-  - Enterprise .NET applications
-  - Business workflow automation
-  - API design and third-party integrations
-  - React and Next.js interfaces
+services:
+  - title: Enterprise .NET applications
+    description: >-
+      ASP.NET Core, ABP and Entity Framework Core over SQL Server — built to be
+      maintained, not just delivered.
+  - title: Business workflow automation
+    description: >-
+      Processes that still run on spreadsheets and email, turned into software
+      your team actually trusts.
+  - title: APIs and integrations
+    description: >-
+      Making your systems talk to the ones you don't control, and keeping the
+      data reconciled when they disagree.
+  - title: React and Next.js interfaces
+    description: >-
+      Front ends that match the design and stay fast once real data shows up.

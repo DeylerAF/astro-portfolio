@@ -26,7 +26,10 @@ const profile = defineCollection({
             website: z.string().url().optional(),
         }),
         about: z.array(z.string()).min(1),
-        focus: z.array(z.string()).default([]),
+        /** What I sell, in the order it is shown. */
+        services: z
+            .array(z.object({ title: z.string(), description: z.string() }))
+            .default([]),
     }),
 });
 

@@ -2,69 +2,63 @@
 import Layout from "@/layouts/Layout.astro";
 
 import AboutMe from "@/components/AboutMe.astro";
-import Briefcase from "@/components/icons/Briefcase.astro";
-import CodeIcon from "@/components/icons/Code.astro";
+import ContactForm from "@/components/ContactForm.astro";
 import Experience from "@/components/Experience.astro";
-import ProfileCheck from "@/components/icons/ProfileCheck.astro";
+import Hero from "@/components/Hero.astro";
 import Projects from "@/components/Projects.astro";
 import SectionContainer from "@/components/SectionContainer.astro";
-import Hero from "@/components/Hero.astro";
-import ContactForm from "@/components/ContactForm.astro";
-import Mail from "@/components/icons/Mail.astro";
+import Services from "@/components/Services.astro";
+import { getProfile } from "@/lib/content";
+
+const profile = await getProfile();
 ---
 
 <Layout
-    title="Deyler.A.F || Full-Stack Developer"
-    description="With a passion for turning innovative ideas into digital realities, I specialize in creating elegant, user-friendly web solutions that drive results. Let's collaborate and bring your digital vision to life."
+    title={`${profile.name} — ${profile.headline}`}
+    description={profile.tagline}
 >
-    <main>
-        <SectionContainer id="home" class="py-16 md:py-36">
-            <Hero />
-        </SectionContainer>
-    </main>
-    <div class="space-y-24">
-        <SectionContainer id="experience">
-            <h2
-                class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
-            >
-                <Briefcase class="size-8" />
-                Job Experience
-            </h2>
-            <Experience />
-        </SectionContainer>
+    <span id="top"></span>
 
-        <SectionContainer id="projects">
-            <h2
-                class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
-            >
-                <CodeIcon class="size-7" />
-                Projects
-            </h2>
-            <Projects />
-        </SectionContainer>
+    <SectionContainer>
+        <Hero />
+    </SectionContainer>
 
-        <SectionContainer id="about-me">
-            <h2
-                class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
-            >
-                <ProfileCheck class="size-8" />
-                About Me
-            </h2>
-            <AboutMe />
-        </SectionContainer>
+    <SectionContainer id="services" class="pt-20 md:pt-24">
+        <h2 class="mb-12 eyebrow">What I do</h2>
+        <Services />
+    </SectionContainer>
 
-        <SectionContainer id="contact" class="pb-24">
-            <h2
-                class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
-            >
-                <Mail class="size-8" />
-                Get in touch
-            </h2>
-            <p class="mb-8 text-gray-700 dark:text-gray-300 max-w-xl">
-                Have a project in mind, or a process that could run better?
-                Tell me about it and I'll reply with how I'd approach it.
-            </p>
+    <SectionContainer id="work" class="pt-20 md:pt-24">
+        <h2 class="mb-10 eyebrow">Selected engagements</h2>
+        <Experience />
+    </SectionContainer>
+
+    <SectionContainer id="projects" class="pt-20 md:pt-24">
+        <h2 class="mb-10 eyebrow">Projects</h2>
+        <Projects />
+    </SectionContainer>
+
+    <SectionContainer id="about" class="pt-20 md:pt-24">
+        <h2 class="mb-10 eyebrow">About</h2>
+        <AboutMe />
+    </SectionContainer>
+
+    <section id="contact" class="mt-24 scroll-mt-24 bg-inverse-bg">
+        <div
+            class="grid w-full gap-12 px-6 py-20 mx-auto max-w-6xl md:grid-cols-2 md:gap-20 md:px-12 md:py-24"
+        >
+            <div class="flex flex-col gap-7">
+                <h2
+                    class="text-4xl font-semibold font-display leading-[1.02] tracking-[-0.03em] text-inverse-fg md:text-5xl"
+                >
+                    Let's talk about your project.
+                </h2>
+                <p class="max-w-md leading-relaxed text-inverse-body">
+                    Tell me what you're trying to build, or what isn't working
+                    today. I'll reply with how I'd approach it — no obligation.
+                </p>
+            </div>
             <ContactForm />
-        </SectionContainer>
-    </div>
+        </div>
+    </section>
 </Layout>

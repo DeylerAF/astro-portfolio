@@ -1,105 +1,165 @@
 ---
+import { getProfile } from "@/lib/content";
+
+const profile = await getProfile();
+
+/** Without a site key the widget cannot render and every submission would be
+ *  rejected, so the form is replaced by a link that always works. */
 const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+const configured = Boolean(siteKey);
+
+const fieldClass =
+    "w-full py-3 bg-transparent border-b outline-hidden border-inverse-rule text-inverse-fg placeholder:text-inverse-body/60 focus-visible:border-inverse-fg transition-colors";
+const labelClass =
+    "font-mono text-[0.6875rem] tracking-[0.1em] uppercase text-inverse-body";
 ---
 
-<form id="contact-form" class="flex flex-col gap-4 max-w-xl" novalidate>
-    <label class="flex flex-col gap-1">
-        <span class="text-sm font-medium">Name</span>
-        <input
-            type="text"
-            name="name"
-            required
-            maxlength="100"
-            autocomplete="name"
-            class="px-3 py-2 bg-transparent border rounded-md border-black/20 dark:border-white/20 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-lime-500"
+{
+    configured ? (
+        <form id="contact-form" class="flex flex-col gap-5" novalidate>
+            <label class="flex flex-col gap-2">
+                <span class={labelClass}>Name</span>
+                <input
+                    type="text"
+                    name="name"
+                    required
+                    maxlength="100"
+                    autocomplete="name"
+                    placeholder="Your name"
+                    class={fieldClass}
+                />
+            </label>
+
+            <label class="flex flex-col gap-2">
+                <span class={labelClass}>Email</span>
+                <input
+                    type="email"
+                    name="email"
+                    required
+                    maxlength="254"
+                    autocomplete="email"
+                    placeholder="you@company.com"
+                    class={fieldClass}
+                />
+            </label>
+
+            <label class="flex flex-col gap-2">
+                <span class={labelClass}>What do you need help with?</span>
+                <textarea
+                    name="message"
+                    required
+                    rows="4"
+                    maxlength="4000"
+                    placeholder="A few lines are enough to start."
+                    class={fieldClass}
+                />
+            </label>
+
+            {/* Hidden from people, irresistible to bots. */}
+            <div
+                class="absolute w-px h-px -m-px overflow-hidden"
+                aria-hidden="true"
+            >
+                <label>
+                    Company
+                    <input
+                        type="text"
+                        name="company"
+                        tabindex="-1"
+                        autocomplete="off"
+                    />
+                </label>
+            </div>
+
+            <div
+                class="cf-turnstile"
+                data-sitekey={siteKey}
+                data-theme="auto"
+            />
+
+            <button
+                type="submit"
+                class="px-7 py-4 mt-2 font-semibold transition-opacity font-display bg-inverse-fg text-inverse-bg hover:opacity-85 disabled:opacity-60 disabled:cursor-not-allowed max-w-fit"
+            >
+                Send message
+            </button>
+
+            <p
+                id="contact-status"
+                role="status"
+                aria-live="polite"
+                class="text-sm text-inverse-body"
+            />
+        </form>
+    ) : (
+        <div class="flex flex-col gap-5">
+            <p class="leading-relaxed text-inverse-body">
+                The contact form isn't live yet. In the meantime, LinkedIn
+                reaches me just as well.
+            </p>
+            <a
+                href={profile.links.linkedin}
+                target="_blank"
+                rel="noopener"
+                class="px-7 py-4 font-semibold transition-opacity font-display bg-inverse-fg text-inverse-bg hover:opacity-85 max-w-fit"
+            >
+                Message me on LinkedIn
+            </a>
+        </div>
+    )
+}
+
+{
+    configured && (
+        <script
+            is:inline
+            src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+            async
+            defer
         />
-    </label>
-
-    <label class="flex flex-col gap-1">
-        <span class="text-sm font-medium">Email</span>
-        <input
-            type="email"
-            name="email"
-            required
-            maxlength="254"
-            autocomplete="email"
-            class="px-3 py-2 bg-transparent border rounded-md border-black/20 dark:border-white/20 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-lime-500"
-        />
-    </label>
-
-    <label class="flex flex-col gap-1">
-        <span class="text-sm font-medium">What do you need help with?</span>
-        <textarea
-            name="message"
-            required
-            rows="5"
-            maxlength="4000"
-            class="px-3 py-2 bg-transparent border rounded-md border-black/20 dark:border-white/20 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-lime-500"
-        ></textarea>
-    </label>
-
-    {/* Honeypot: hidden from people, irresistible to bots. */}
-    <div class="absolute w-px h-px -m-px overflow-hidden" aria-hidden="true">
-        <label>
-            Company
-            <input type="text" name="company" tabindex="-1" autocomplete="off" />
-        </label>
-    </div>
-
-    <div class="cf-turnstile" data-sitekey={siteKey} data-theme="auto"></div>
-
-    <button
-        type="submit"
-        class="px-4 py-2 font-medium transition rounded-md bg-lime-400 dark:bg-lime-600 text-black/90 hover:bg-lime-500 disabled:opacity-60 disabled:cursor-not-allowed max-w-fit"
-    >
-        Send message
-    </button>
-
-    <p id="contact-status" role="status" aria-live="polite" class="text-sm"></p>
-</form>
-
-<script
-    is:inline
-    src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-    async
-    defer></script>
+    )
+}
 
 <script>
-    const form = document.getElementById("contact-form") as HTMLFormElement;
-    const status = document.getElementById("contact-status")!;
-    const button = form.querySelector("button")!;
+    const form = document.getElementById("contact-form") as HTMLFormElement | null;
 
-    form.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        button.disabled = true;
-        status.className = "text-sm";
-        status.textContent = "Sending…";
+    if (form) {
+        const status = document.getElementById("contact-status")!;
+        const button = form.querySelector("button")!;
 
-        try {
-            const response = await fetch("/api/contact", {
-                method: "POST",
-                body: new FormData(form),
-            });
-            const result = (await response.json()) as {
-                ok?: boolean;
-                error?: string;
-            };
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            button.disabled = true;
+            status.className = "text-sm text-inverse-body";
+            status.textContent = "Sending…";
 
-            if (response.ok && result.ok) {
-                form.reset();
-                status.className = "text-sm text-lime-600 dark:text-lime-400";
-                status.textContent = "Thanks — I'll get back to you shortly.";
-            } else {
-                status.className = "text-sm text-red-600 dark:text-red-400";
-                status.textContent = result.error ?? "Something went wrong.";
+            try {
+                const response = await fetch("/api/contact", {
+                    method: "POST",
+                    body: new FormData(form),
+                });
+                const result = (await response.json()) as {
+                    ok?: boolean;
+                    error?: string;
+                };
+
+                if (response.ok && result.ok) {
+                    form.reset();
+                    status.className = "text-sm text-inverse-fg";
+                    status.textContent =
+                        "Thanks — I'll get back to you shortly.";
+                } else {
+                    status.className = "text-sm text-red-400";
+                    status.textContent = result.error ?? "Something went wrong.";
+                }
+            } catch {
+                status.className = "text-sm text-red-400";
+                status.textContent = "Network error. Please try again.";
+            } finally {
+                // Each token is single-use, so a retry needs a fresh challenge.
+                window.turnstile?.reset();
+                button.disabled = false;
             }
-        } catch {
-            status.className = "text-sm text-red-600 dark:text-red-400";
-            status.textContent = "Network error. Please try again.";
-        } finally {
-            // Each token is single-use, so a retry needs a fresh challenge.
-            window.turnstile?.reset();
-            button.disabled = false;
-        }
-    });
+        });
+    }
 </script>

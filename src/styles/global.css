@@ -3,3 +3,63 @@
 /* Tailwind v4 no longer reads `darkMode: 'class'` from a JS config.
    The theme toggle sets `.dark` on <html>, so declare the variant here. */
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* Palette. The theme tokens below point at these, so a single set of
+   utilities (bg-paper, text-ink…) resolves correctly in both themes. */
+:root {
+    --paper: #fafaf8;
+    --ink: #14140f;
+    --body: #45453e;
+    --muted: #6e6e66;
+    --faint: #9a9a90;
+    --rule: #e2e1d9;
+    --accent: #2b4c8c;
+    --inverse-bg: #14140f;
+    --inverse-fg: #fafaf8;
+    --inverse-body: #a8a8a0;
+    --inverse-rule: #3a3a32;
+}
+
+:root:is(.dark, .dark *),
+.dark {
+    --paper: #121210;
+    --ink: #f4f3ee;
+    --body: #c4c3ba;
+    --muted: #9a9a90;
+    --faint: #6e6e66;
+    --rule: #2c2c26;
+    /* Lifted so it keeps its contrast against the dark ground. */
+    --accent: #8aabe0;
+    --inverse-bg: #f4f3ee;
+    --inverse-fg: #121210;
+    --inverse-body: #55554c;
+    --inverse-rule: #d6d5cc;
+}
+
+@theme inline {
+    --font-display: "Archivo Variable", system-ui, sans-serif;
+    --font-sans: "Onest Variable", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+
+    --color-paper: var(--paper);
+    --color-ink: var(--ink);
+    --color-body: var(--body);
+    --color-muted: var(--muted);
+    --color-faint: var(--faint);
+    --color-rule: var(--rule);
+    --color-accent: var(--accent);
+    --color-inverse-bg: var(--inverse-bg);
+    --color-inverse-fg: var(--inverse-fg);
+    --color-inverse-body: var(--inverse-body);
+    --color-inverse-rule: var(--inverse-rule);
+}
+
+/* The eyebrow label that opens each section. */
+@utility eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--faint);
+}
