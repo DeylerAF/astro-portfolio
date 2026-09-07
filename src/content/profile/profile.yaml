@@ -1,8 +1,9 @@
 name: Deyler Alvarez Fernández
-headline: Independent Full-Stack Software Engineer
+headline: Independent AI Solutions Architect
 tagline: >-
-  I build enterprise web applications and the business workflows behind them —
-  from C# and .NET backends to the interfaces people use every day.
+  I design and build the systems a business actually runs on — and increasingly,
+  the AI that runs inside them. The technology follows the problem, not the
+  other way round.
 location: La Fortuna, Alajuela, Costa Rica
 yearsLabel: 5+ years
 availability: Available for new projects
@@ -12,33 +13,41 @@ links:
   website: https://deyleraf.dev
 about:
   - >-
-    I'm a full-stack software engineer working independently with clients from
-    Costa Rica. Since 2020 I've delivered enterprise applications as a
-    contractor, which means I'm used to owning a problem end to end: scoping it,
-    building the backend and the interface, and shipping it into production.
+    I work independently with clients from Costa Rica, and I sell solutions
+    rather than a stack. What the problem needs decides the technology: I've
+    spent five years delivering enterprise systems — most recently logistics
+    workflows in .NET — and I bring that engineering discipline to whatever a
+    project actually calls for.
   - >-
-    Most of my work lives in the .NET ecosystem — C#, ASP.NET Core, the ABP
-    Framework and Entity Framework Core over SQL Server — and I pair it with
-    React, Next.js and TypeScript on the front end. Lately that has meant
-    logistics workflows: fleet coordination, partial deliveries, signed
-    checklists, and integrations with external systems over REST.
+    Lately that means AI, in two ways. I develop with AI end to end, which
+    changes both how much one engineer can deliver and how quickly, and means
+    I'm no longer bounded by the languages I happened to learn first. And AI
+    can be part of the solution itself: workflows that run without anyone
+    driving them, systems that answer questions from a company's own knowledge,
+    agents that act inside the tools a business already uses.
   - >-
-    If you have a process that still runs on spreadsheets and email, or an
-    application that has outgrown the way it was first built, that's the kind of
-    work I enjoy most.
+    To be straight about it, the AI work is where I'm investing now — built and
+    proven on my own projects rather than shipped to a client yet. The
+    engineering underneath it is not new; that part has five years of
+    production behind it. If you have a process still running on spreadsheets
+    and email, or a system that has outgrown the way it was first built, that's
+    the conversation I want to have.
 services:
-  - title: Enterprise .NET applications
+  - title: AI workflows and automation
     description: >-
-      ASP.NET Core, ABP and Entity Framework Core over SQL Server — built to be
-      maintained, not just delivered.
-  - title: Business workflow automation
+      Manual processes — quoting, triage, reporting, document handling — rebuilt
+      to run themselves, and to hand off to a person at the points where that
+      still matters.
+  - title: Company knowledge systems
     description: >-
-      Processes that still run on spreadsheets and email, turned into software
-      your team actually trusts.
-  - title: APIs and integrations
+      Your documents, procedures and history made answerable, so a team asks a
+      question instead of hunting through folders and asking whoever has been
+      there longest.
+  - title: Autonomous agents, integrated
     description: >-
-      Making your systems talk to the ones you don't control, and keeping the
-      data reconciled when they disagree.
-  - title: React and Next.js interfaces
+      Agents that do real work inside your existing systems — reading, deciding
+      and acting through the tools your business already runs on.
+  - title: Enterprise applications and integrations
     description: >-
-      Front ends that match the design and stay fast once real data shows up.
+      The foundation the rest sits on: business software, APIs and integrations
+      built to be maintained. Five years of it, mostly in the .NET ecosystem.
