@@ -9,7 +9,10 @@ export default defineConfig({
   integrations: [robotsTxt()],
   site: 'https://deyleraf.dev',
   output: 'static',
-  adapter: cloudflare(),
+  // Every page that renders an image is prerendered, so images are
+  // optimised with sharp at build time. Cloudflare has no sharp at
+  // runtime, and the default setting warns about exactly that.
+  adapter: cloudflare({ imageService: 'compile' }),
   vite: {
     plugins: [tailwindcss()],
   },

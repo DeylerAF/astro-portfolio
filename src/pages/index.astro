@@ -9,6 +9,8 @@ import ProfileCheck from "@/components/icons/ProfileCheck.astro";
 import Projects from "@/components/Projects.astro";
 import SectionContainer from "@/components/SectionContainer.astro";
 import Hero from "@/components/Hero.astro";
+import ContactForm from "@/components/ContactForm.astro";
+import Mail from "@/components/icons/Mail.astro";
 ---
 
 <Layout
@@ -49,6 +51,20 @@ import Hero from "@/components/Hero.astro";
                 About Me
             </h2>
             <AboutMe />
+        </SectionContainer>
+
+        <SectionContainer id="contact" class="pb-24">
+            <h2
+                class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
+            >
+                <Mail class="size-8" />
+                Get in touch
+            </h2>
+            <p class="mb-8 text-gray-700 dark:text-gray-300 max-w-xl">
+                Have a project in mind, or a process that could run better?
+                Tell me about it and I'll reply with how I'd approach it.
+            </p>
+            <ContactForm />
         </SectionContainer>
     </div>
 </Layout>

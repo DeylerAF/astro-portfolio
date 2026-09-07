@@ -1,0 +1,105 @@
+---
+const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+---
+
+<form id="contact-form" class="flex flex-col gap-4 max-w-xl" novalidate>
+    <label class="flex flex-col gap-1">
+        <span class="text-sm font-medium">Name</span>
+        <input
+            type="text"
+            name="name"
+            required
+            maxlength="100"
+            autocomplete="name"
+            class="px-3 py-2 bg-transparent border rounded-md border-black/20 dark:border-white/20 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-lime-500"
+        />
+    </label>
+
+    <label class="flex flex-col gap-1">
+        <span class="text-sm font-medium">Email</span>
+        <input
+            type="email"
+            name="email"
+            required
+            maxlength="254"
+            autocomplete="email"
+            class="px-3 py-2 bg-transparent border rounded-md border-black/20 dark:border-white/20 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-lime-500"
+        />
+    </label>
+
+    <label class="flex flex-col gap-1">
+        <span class="text-sm font-medium">What do you need help with?</span>
+        <textarea
+            name="message"
+            required
+            rows="5"
+            maxlength="4000"
+            class="px-3 py-2 bg-transparent border rounded-md border-black/20 dark:border-white/20 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-lime-500"
+        ></textarea>
+    </label>
+
+    {/* Honeypot: hidden from people, irresistible to bots. */}
+    <div class="absolute w-px h-px -m-px overflow-hidden" aria-hidden="true">
+        <label>
+            Company
+            <input type="text" name="company" tabindex="-1" autocomplete="off" />
+        </label>
+    </div>
+
+    <div class="cf-turnstile" data-sitekey={siteKey} data-theme="auto"></div>
+
+    <button
+        type="submit"
+        class="px-4 py-2 font-medium transition rounded-md bg-lime-400 dark:bg-lime-600 text-black/90 hover:bg-lime-500 disabled:opacity-60 disabled:cursor-not-allowed max-w-fit"
+    >
+        Send message
+    </button>
+
+    <p id="contact-status" role="status" aria-live="polite" class="text-sm"></p>
+</form>
+
+<script
+    is:inline
+    src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+    async
+    defer></script>
+
+<script>
+    const form = document.getElementById("contact-form") as HTMLFormElement;
+    const status = document.getElementById("contact-status")!;
+    const button = form.querySelector("button")!;
+
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        button.disabled = true;
+        status.className = "text-sm";
+        status.textContent = "Sending…";
+
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                body: new FormData(form),
+            });
+            const result = (await response.json()) as {
+                ok?: boolean;
+                error?: string;
+            };
+
+            if (response.ok && result.ok) {
+                form.reset();
+                status.className = "text-sm text-lime-600 dark:text-lime-400";
+                status.textContent = "Thanks — I'll get back to you shortly.";
+            } else {
+                status.className = "text-sm text-red-600 dark:text-red-400";
+                status.textContent = result.error ?? "Something went wrong.";
+            }
+        } catch {
+            status.className = "text-sm text-red-600 dark:text-red-400";
+            status.textContent = "Network error. Please try again.";
+        } finally {
+            // Each token is single-use, so a retry needs a fresh challenge.
+            window.turnstile?.reset();
+            button.disabled = false;
+        }
+    });
+</script>
