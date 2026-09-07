@@ -1,11 +1,8 @@
 ---
-import { getCollection } from "astro:content";
 import ExperienceItem from "./ExperienceItem.astro";
-import { byMostRecent } from "@/lib/dates";
+import { getEngagements } from "@/lib/content";
 
-const engagements = (await getCollection("engagements"))
-    .map((entry) => entry.data)
-    .sort(byMostRecent);
+const engagements = await getEngagements();
 ---
 
 <ol class="relative mt-16">
