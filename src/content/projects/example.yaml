@@ -1,0 +1,20 @@
+# Template for a project. Flip `draft` to false once it is online and it
+# appears on the site; while it stays true nothing renders it.
+#
+# Copy this file, name it after the project (kebab-case), and fill it in.
+title: Example project
+summary: >-
+  One or two sentences on what it does and who it is for. This is the line
+  people read before deciding whether to care.
+description:
+  - >-
+    A paragraph on the interesting part — the constraint that shaped it, the
+    problem that was actually hard. Add as many as it needs, or none.
+stack:
+  - C#
+  - ASP.NET Core
+  - React
+# url: https://example.com
+# repo: https://github.com/DeylerAF/example
+order: 0
+draft: true

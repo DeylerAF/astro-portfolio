@@ -5,6 +5,9 @@ export const prerender = false;
 
 const LIMITS = { name: 100, email: 254, message: 4000 } as const;
 
+const UNAVAILABLE =
+    "The message could not be sent. Please try again later.";
+
 type Fields = { name: string; email: string; message: string };
 
 function json(body: unknown, status: number): Response {
@@ -41,24 +44,40 @@ function validate(form: FormData): { fields: Fields } | { error: string } {
     return { fields: { name, email, message } };
 }
 
-async function passesTurnstile(
+/** "failed" is the visitor's problem to retry; "unavailable" is ours. */
+type CheckResult = "passed" | "failed" | "unavailable";
+
+async function checkTurnstile(
     token: string,
     secret: string,
     ip: string | null,
-): Promise<boolean> {
+): Promise<CheckResult> {
     const body = new FormData();
     body.append("secret", secret);
     body.append("response", token);
     if (ip) body.append("remoteip", ip);
 
-    const response = await fetch(
-        "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-        { method: "POST", body },
-    );
+    try {
+        const response = await fetch(
+            "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+            { method: "POST", body },
+        );
 
-    if (!response.ok) return false;
-    const result = (await response.json()) as { success?: boolean };
-    return result.success === true;
+        if (!response.ok) {
+            console.error("Turnstile siteverify failed", {
+                status: response.status,
+            });
+            return "unavailable";
+        }
+
+        const result = (await response.json()) as { success?: boolean };
+        return result.success === true ? "passed" : "failed";
+    } catch (error) {
+        // DNS or connectivity trouble inside the Worker. Letting this escape
+        // would return an opaque 500 rather than the JSON the client parses.
+        console.error("Turnstile siteverify threw", error);
+        return "unavailable";
+    }
 }
 
 export const POST: APIRoute = async ({ request, locals, clientAddress }) => {
@@ -79,43 +98,49 @@ export const POST: APIRoute = async ({ request, locals, clientAddress }) => {
     if (!token) {
         return json({ error: "Please complete the anti-spam check." }, 400);
     }
-    if (
-        !(await passesTurnstile(
-            token,
-            env.TURNSTILE_SECRET_KEY,
-            clientAddress ?? null,
-        ))
-    ) {
+    const check = await checkTurnstile(
+        token,
+        env.TURNSTILE_SECRET_KEY,
+        clientAddress ?? null,
+    );
+
+    if (check === "failed") {
         return json({ error: "The anti-spam check failed. Try again." }, 403);
     }
+    if (check === "unavailable") {
+        return json({ error: UNAVAILABLE }, 502);
+    }
 
-    const sent = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-            authorization: `Bearer ${env.RESEND_API_KEY}`,
-            "content-type": "application/json",
-        },
-        body: JSON.stringify({
-            from: env.CONTACT_FROM_EMAIL,
-            to: [env.CONTACT_TO_EMAIL],
-            // The visitor controls this address, so it is only ever a
-            // reply-to. Putting it in `from` would forge the sender and get
-            // the mail spam-filtered.
-            reply_to: email,
-            subject: `Portfolio enquiry from ${name}`,
-            text: `From: ${name} <${email}>\n\n${message}`,
-        }),
-    });
+    let sent: Response;
+    try {
+        sent = await fetch("https://api.resend.com/emails", {
+            method: "POST",
+            headers: {
+                authorization: `Bearer ${env.RESEND_API_KEY}`,
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({
+                from: env.CONTACT_FROM_EMAIL,
+                to: [env.CONTACT_TO_EMAIL],
+                // The visitor controls this address, so it is only ever a
+                // reply-to. Putting it in `from` would forge the sender and
+                // get the mail spam-filtered.
+                reply_to: email,
+                subject: `Portfolio enquiry from ${name}`,
+                text: `From: ${name} <${email}>\n\n${message}`,
+            }),
+        });
+    } catch (error) {
+        console.error("Resend request threw", error);
+        return json({ error: UNAVAILABLE }, 502);
+    }
 
     if (!sent.ok) {
         console.error("Resend rejected the message", {
             status: sent.status,
             body: await sent.text(),
         });
-        return json(
-            { error: "The message could not be sent. Please try again later." },
-            502,
-        );
+        return json({ error: UNAVAILABLE }, 502);
     }
 
     return json({ ok: true }, 200);
