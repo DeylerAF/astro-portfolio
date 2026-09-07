@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+/* Tailwind v4 no longer reads `darkMode: 'class'` from a JS config.
+   The theme toggle sets `.dark` on <html>, so declare the variant here. */
+@custom-variant dark (&:where(.dark, .dark *));

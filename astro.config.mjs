@@ -1,13 +1,16 @@
 import { defineConfig } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
-import robotsTxt from "astro-robots-txt";
+import tailwindcss from '@tailwindcss/vite';
+import robotsTxt from 'astro-robots-txt';
 
-import cloudflare from "@astrojs/cloudflare";
+import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), robotsTxt()],
+  integrations: [robotsTxt()],
   site: 'https://deyleraf.dev',
-  output: "server",
-  adapter: cloudflare()
+  output: 'static',
+  adapter: cloudflare(),
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

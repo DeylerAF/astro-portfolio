@@ -112,9 +112,21 @@ const navItems = [
         animation-range: 0 100px;
     }
 
+    /* Tailwind v4 forbids `@apply` inside `@keyframes`, so this is the
+       plain-CSS equivalent of `shadow-lg bg-lime-500/10 ring-2 ring-lime-500
+       backdrop-blur`. */
     @keyframes nav-shadown {
         to {
-            @apply shadow-lg bg-lime-500/10 ring-2 ring-lime-500 dark:ring-lime-500 backdrop-blur;
+            background-color: color-mix(
+                in oklab,
+                var(--color-lime-500) 10%,
+                transparent
+            );
+            box-shadow:
+                0 0 0 2px var(--color-lime-500),
+                0 10px 15px -3px rgb(0 0 0 / 0.1),
+                0 4px 6px -4px rgb(0 0 0 / 0.1);
+            backdrop-filter: blur(8px);
         }
     }
 </style>
