@@ -149,4 +149,7 @@ dist
 .pnp.*
 
 # lock files
+# package-lock.json is committed on purpose: Cloudflare Pages installs
+# from it, and without one every build resolves a different tree.
 *lock.json
+!package-lock.json

@@ -1,43 +1,15 @@
 ---
-const currentYear = new Date().getFullYear();
+import { getProfile } from "@/lib/content";
+
+const profile = await getProfile();
+const year = new Date().getFullYear();
 ---
 
-<footer
-    class="opacity-80 m-4 mt-16 w-full mx-auto container lg:max-w-4xl md:max-w-2xl mb-10 flex justify-center"
->
+<footer class="border-t border-rule">
     <div
-        class="rounded-lg w-full max-w-screen-xl mx-auto md:flex md:items-center md:justify-between py-4"
+        class="flex flex-col gap-2 px-6 py-8 mx-auto font-mono text-xs max-w-6xl text-faint sm:flex-row sm:justify-between md:px-12"
     >
-        <span
-            class="text-sm text-zinc-800/90 dark:text-zinc-200/90"
-        >
-            “Alone, we can do so little; together, we can do so much.”
-            <br />
-            © {currentYear} -
-            <a
-                href="https://www.linkedin.com/in/deyleraf/"
-                rel="noopener noreferrer"
-                target="_blank"
-                class="hover:underline">Deyler Alvarez Fernández</a
-            >
-        </span>
-        <ul
-            class="flex flex-wrap items-center mt-3 text-sm font-medium dark:text-white/90 sm:mt-0"
-        >
-            <li>
-                <a href="/#about-me" class="hover:underline me-4 md:me-6"
-                    >About me</a
-                >
-            </li>
-            <li>
-                <a
-                    id="contact"
-                    href="https://www.linkedin.com/in/deyleraf/"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    class="hover:underline">Contact</a
-                >
-            </li>
-        </ul>
+        <span>deyleraf.dev</span>
+        <span>© {year} {profile.name}</span>
     </div>
 </footer>

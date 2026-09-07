@@ -1,13 +1,19 @@
 import { defineConfig } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
-import robotsTxt from "astro-robots-txt";
+import tailwindcss from '@tailwindcss/vite';
+import robotsTxt from 'astro-robots-txt';
 
-import cloudflare from "@astrojs/cloudflare";
+import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), robotsTxt()],
+  integrations: [robotsTxt()],
   site: 'https://deyleraf.dev',
-  output: "server",
-  adapter: cloudflare()
+  output: 'static',
+  // Every page that renders an image is prerendered, so images are
+  // optimised with sharp at build time. Cloudflare has no sharp at
+  // runtime, and the default setting warns about exactly that.
+  adapter: cloudflare({ imageService: 'compile' }),
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

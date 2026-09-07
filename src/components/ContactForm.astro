@@ -1,0 +1,165 @@
+---
+import { getProfile } from "@/lib/content";
+
+const profile = await getProfile();
+
+/** Without a site key the widget cannot render and every submission would be
+ *  rejected, so the form is replaced by a link that always works. */
+const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+const configured = Boolean(siteKey);
+
+const fieldClass =
+    "w-full py-3 bg-transparent border-b outline-hidden border-inverse-rule text-inverse-fg placeholder:text-inverse-body/60 focus-visible:border-inverse-fg transition-colors";
+const labelClass =
+    "font-mono text-[0.6875rem] tracking-[0.1em] uppercase text-inverse-body";
+---
+
+{
+    configured ? (
+        <form id="contact-form" class="flex flex-col gap-5" novalidate>
+            <label class="flex flex-col gap-2">
+                <span class={labelClass}>Name</span>
+                <input
+                    type="text"
+                    name="name"
+                    required
+                    maxlength="100"
+                    autocomplete="name"
+                    placeholder="Your name"
+                    class={fieldClass}
+                />
+            </label>
+
+            <label class="flex flex-col gap-2">
+                <span class={labelClass}>Email</span>
+                <input
+                    type="email"
+                    name="email"
+                    required
+                    maxlength="254"
+                    autocomplete="email"
+                    placeholder="you@company.com"
+                    class={fieldClass}
+                />
+            </label>
+
+            <label class="flex flex-col gap-2">
+                <span class={labelClass}>What do you need help with?</span>
+                <textarea
+                    name="message"
+                    required
+                    rows="4"
+                    maxlength="4000"
+                    placeholder="A few lines are enough to start."
+                    class={fieldClass}
+                />
+            </label>
+
+            {/* Hidden from people, irresistible to bots. */}
+            <div
+                class="absolute w-px h-px -m-px overflow-hidden"
+                aria-hidden="true"
+            >
+                <label>
+                    Company
+                    <input
+                        type="text"
+                        name="company"
+                        tabindex="-1"
+                        autocomplete="off"
+                    />
+                </label>
+            </div>
+
+            <div
+                class="cf-turnstile"
+                data-sitekey={siteKey}
+                data-theme="auto"
+            />
+
+            <button
+                type="submit"
+                class="px-7 py-4 mt-2 font-semibold transition-opacity font-display bg-inverse-fg text-inverse-bg hover:opacity-85 disabled:opacity-60 disabled:cursor-not-allowed max-w-fit"
+            >
+                Send message
+            </button>
+
+            <p
+                id="contact-status"
+                role="status"
+                aria-live="polite"
+                class="text-sm text-inverse-body"
+            />
+        </form>
+    ) : (
+        <div class="flex flex-col gap-5">
+            <p class="leading-relaxed text-inverse-body">
+                The contact form isn't live yet. In the meantime, LinkedIn
+                reaches me just as well.
+            </p>
+            <a
+                href={profile.links.linkedin}
+                target="_blank"
+                rel="noopener"
+                class="px-7 py-4 font-semibold transition-opacity font-display bg-inverse-fg text-inverse-bg hover:opacity-85 max-w-fit"
+            >
+                Message me on LinkedIn
+            </a>
+        </div>
+    )
+}
+
+{
+    configured && (
+        <script
+            is:inline
+            src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+            async
+            defer
+        />
+    )
+}
+
+<script>
+    const form = document.getElementById("contact-form") as HTMLFormElement | null;
+
+    if (form) {
+        const status = document.getElementById("contact-status")!;
+        const button = form.querySelector("button")!;
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            button.disabled = true;
+            status.className = "text-sm text-inverse-body";
+            status.textContent = "Sending…";
+
+            try {
+                const response = await fetch("/api/contact", {
+                    method: "POST",
+                    body: new FormData(form),
+                });
+                const result = (await response.json()) as {
+                    ok?: boolean;
+                    error?: string;
+                };
+
+                if (response.ok && result.ok) {
+                    form.reset();
+                    status.className = "text-sm text-inverse-fg";
+                    status.textContent =
+                        "Thanks — I'll get back to you shortly.";
+                } else {
+                    status.className = "text-sm text-red-400";
+                    status.textContent = result.error ?? "Something went wrong.";
+                }
+            } catch {
+                status.className = "text-sm text-red-400";
+                status.textContent = "Network error. Please try again.";
+            } finally {
+                // Each token is single-use, so a retry needs a fresh challenge.
+                window.turnstile?.reset();
+                button.disabled = false;
+            }
+        });
+    }
+</script>
