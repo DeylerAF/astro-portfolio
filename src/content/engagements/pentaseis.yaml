@@ -1,0 +1,28 @@
+client: Pentaseis
+role: Full-Stack Developer
+start: 2020-09
+end: 2025-09
+location: Costa Rica
+arrangement: Remote · Contract
+url: https://pentaseis.com/
+summary: >-
+  Five years building and maintaining client web platforms for a digital agency,
+  working alongside designers and backend developers.
+highlights:
+  - >-
+    Developed responsive interfaces with React, JavaScript, SASS and Tailwind
+    CSS, translating designs into production front ends.
+  - >-
+    Built custom WordPress themes on Advanced Custom Fields for client sites.
+  - >-
+    Implemented React components and state management, and integrated REST APIs
+    and JWT authentication flows.
+stack:
+  - React
+  - TypeScript
+  - JavaScript
+  - Tailwind CSS
+  - SASS
+  - WordPress
+  - PHP
+  - Git

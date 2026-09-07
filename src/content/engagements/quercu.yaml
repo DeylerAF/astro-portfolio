@@ -1,0 +1,30 @@
+client: Quercu
+role: Full-Stack Developer
+start: 2025-05
+location: Costa Rica
+arrangement: Remote · Contract
+summary: >-
+  Enterprise logistics platform: I build the workflows that move an order from
+  preparation to a signed delivery, across both the backend services and the
+  interfaces the operations team works in.
+highlights:
+  - >-
+    Develop logistics workflows in C#, ASP.NET Core, the ABP Framework and
+    Entity Framework Core, with Razor and Kendo UI on the front end.
+  - >-
+    Implement preparation, fleet coordination, partial delivery and
+    delivery-date approval flows end to end.
+  - >-
+    Integrate with Oracle REST Data Services, including synchronisation and
+    reconciliation of fleet assignments.
+  - >-
+    Build signed checklist and PDF document flows, background notifications, and
+    automated unit and browser tests.
+stack:
+  - C#
+  - ASP.NET Core
+  - ABP Framework
+  - Entity Framework Core
+  - SQL Server
+  - Kendo UI
+  - Oracle REST Data Services

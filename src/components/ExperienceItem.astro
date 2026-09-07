@@ -1,18 +1,32 @@
 ---
 import LinkInline from "./LinkInline.astro";
+import { formatPeriod } from "@/lib/dates";
 
 interface Props {
-    title: string;
-    company: string;
-    link?: string;
-    date: string;
-    des1: string;
-    des2: string;
-    des3: string;
+    role: string;
+    client: string;
+    url?: string;
+    start: string;
+    end?: string;
+    arrangement?: string;
+    summary: string;
+    highlights: string[];
     last: boolean;
 }
 
-const { title, company, link, date, des1, des2, des3, last } = Astro.props;
+const {
+    role,
+    client,
+    url,
+    start,
+    end,
+    arrangement,
+    summary,
+    highlights,
+    last,
+} = Astro.props;
+
+const period = formatPeriod(start, end);
 ---
 
 <div
@@ -36,31 +50,39 @@ const { title, company, link, date, des1, des2, des3, last } = Astro.props;
                 </svg>
             </span>
             <h3 class="text-xl font-bold text-lime-600 dark:text-lime-400">
-                {title}
+                {role}
             </h3>
             <h4 class="font-semibold text-xl text-gray-600 dark:text-white">
-                {company}
+                {client}
             </h4>
             <time class="p-0 m-0 text-sm text-gray-600/80 dark:text-white/80"
-                >{date}</time
+                >{period}</time
             >
+            {
+                arrangement && (
+                    <p class="text-sm text-gray-600/80 dark:text-white/80">
+                        {arrangement}
+                    </p>
+                )
+            }
         </div>
     </div>
     <div
         class=`relative flex flex-col gap-2 ${last ? 'pb-0' : 'pb-12'} text-gray-600 dark:text-gray-300 md:col-span-3`
     >
-        <p>
-            {des1}
-        </p>
-        <p>
-            {des2}
-        </p>
-        <p>
-            {des3}
-        </p>
+        <p>{summary}</p>
         {
-            link && (
-                <LinkInline href={link}>
+            highlights.length > 0 && (
+                <ul class="flex flex-col gap-2 list-disc list-outside ps-4 marker:text-lime-600 dark:marker:text-lime-400">
+                    {highlights.map((highlight) => (
+                        <li>{highlight}</li>
+                    ))}
+                </ul>
+            )
+        }
+        {
+            url && (
+                <LinkInline href={url}>
                     Know more{" "}
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
