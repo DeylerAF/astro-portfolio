@@ -24,12 +24,12 @@ const THEMES = ["Light", "Dark", "Auto"];
     </button>
     <div
         id="themes-menu"
-        class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md backdrop-blur-3xl bg-lime-400/90 dark:bg-lime-600/90 border border-lime-600 dark:border-lime-400 shadow-[0_3px_10px_rgb(0,0,0,0.3)] dark:shadow-[0_3px_10px_rgb(255,255,255,0.3)]"
+        class="absolute right-0 z-30 hidden p-1 border scale-80 top-8 min-w-32 bg-paper border-rule shadow-lg shadow-ink/10"
     >
         <ul>
             {
                 THEMES.map((theme) => (
-                    <li class="themes-menu-option px-2 py-1.5 cursor-default hover:bg-lime-600/50 dark:hover:bg-lime-400/90 hover:text-white/90 dark:hover:text-black/90 rounded-sm">
+                    <li class="themes-menu-option cursor-default px-2.5 py-1.5 font-mono text-xs tracking-[0.06em] uppercase text-muted transition-colors hover:bg-ink/5 hover:text-ink">
                         {theme}
                     </li>
                 ))
